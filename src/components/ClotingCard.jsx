@@ -1,10 +1,9 @@
 import { useState } from 'react';
 import { Card, Button, CardBody, Image } from "@heroui/react";
-import camisa from '../images/Clothes/camisetaCalculatorBlancoArenaFrontal.jpg';
 import { HeartIcon as OutlineHeartIcon } from "@heroicons/react/24/outline";
 import { HeartIcon as SolidHeartIcon } from "@heroicons/react/24/solid";
 
-export default function ClothingCard() {
+export default function ClothingCard({ name, price, image }) {
   const [isFavorite, setIsFavorite] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
   const [isClicked, setIsClicked] = useState(false);
@@ -12,23 +11,26 @@ export default function ClothingCard() {
   const toggleFavorite = () => {
     setIsFavorite(!isFavorite);
     setIsClicked(true);
-    setTimeout(() => setIsClicked(false), 200); // Reset the click state after 200ms
+    setTimeout(() => setIsClicked(false), 200); 
   };
 
   return (
-    <Card className="py-1 w-[220px]">
+    <Card className="py-1 w-[220px] select-none">
       <CardBody className="overflow-visible">
-        <Image
-          alt="Card background"
-          className="object-cover rounded-xl mb-3"
-          src={camisa}
-          height={250}
-          width={200}
-        />
-        <p className="text-tiny font-bold mb-2">Camiseta Calculator Blanco Arena</p>
-        <small className="text-default-500">$2500</small>
+        <div className="relative overflow-hidden rounded-xl mb-3">
+          <Image
+            alt="Card background"
+            className="object-cover transition-transform duration-300 hover:scale-110 cursor-pointer"
+            src={image}
+            height={250}
+            width={200}
+            onClick={() => console.log('Image clicked')}
+          />
+        </div>
+        <p className="text-tiny font-bold mb-2">{name}</p>
+        <small className="text-default-500">${price}</small>
         <div className="flex justify-between items-center mt-3">
-          <Button className="w-[70%] text-white" color="primary" size="sm">
+          <Button className="w-[70%] text-white font-bold" color="primary" size="sm">
             Add to cart
           </Button>
           <div
@@ -38,7 +40,7 @@ export default function ClothingCard() {
             className={`cursor-pointer transition-transform ${isClicked ? 'transform scale-110' : ''}`}
           >
             {isFavorite || isHovered ? (
-              <SolidHeartIcon className={`h-7 w-7 ${isHovered ? 'text-cafeAvellana' : 'text-cafeCacao'}`} />
+              <SolidHeartIcon className={`h-7 w-7 ${isHovered ? 'text-cafeAvellana  ' : 'text-cafeCacao'}`} />
             ) : (
               <OutlineHeartIcon className="h-7 w-7 text-cafeCacao" />
             )}

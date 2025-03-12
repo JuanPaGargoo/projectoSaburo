@@ -1,17 +1,19 @@
-import { useState } from 'react'
+
 import NavbarSaburo from './components/NavbarSaburo'
 import MediaSpot from './components/MediaSpot'
-import ClothingCard from './components/ClotingCard'
+
+import NewArrivalsSection from './components/NewArrivalsSection'
+import TopSellingSection from './components/TopSellingSection'
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <>
      <NavbarSaburo/> 
-
       <MediaSpot/>
-      <ClothingCard/>
+      <NewArrivalsSection/>
+      <TopSellingSection/>
+     
 
     </>
     

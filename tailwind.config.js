@@ -14,6 +14,7 @@ export default {
         bebas: ["Bebas Neue", "system-ui"],
         oleo: ["Oleo Script", "system-ui"],
         poppins: ["Poppins", "system-ui"],
+        abrilFatface: ["Abril Fatface", "system-ui"],
       },
       colors: {
         vino: "#7e013e",
@@ -38,7 +39,7 @@ export default {
         light: {
           colors: {
             primary: "#693e26", 
-            secondary: "#e7dcc9",
+            secondary: "#f3ede2",
             
            
           },
@@ -46,7 +47,7 @@ export default {
         dark: {
           colors: {
             primary: "#693e26",
-            secondary: "#e7dcc9",
+            secondary: "#f3ede2",
            
           },
         },
