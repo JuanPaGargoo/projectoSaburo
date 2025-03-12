@@ -4,6 +4,7 @@ import MediaSpot from './components/MediaSpot'
 
 import NewArrivalsSection from './components/NewArrivalsSection'
 import TopSellingSection from './components/TopSellingSection'
+import CommentsSection from './components/CommentsSection'
 
 function App() {
 
@@ -13,6 +14,7 @@ function App() {
       <MediaSpot/>
       <NewArrivalsSection/>
       <TopSellingSection/>
+      <CommentsSection/>
      
 
     </>
