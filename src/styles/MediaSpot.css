@@ -1,0 +1,30 @@
+.media-spot-text {
+  font-family: 'Abril Fatface', bold;
+  color: rgba(105, 62, 38, 1);
+  margin-left: 20%;
+  text-align: justify;
+}
+
+.media-spot-text h1 {
+  margin-bottom: 20px; /* Espacio entre el h1 y el p */
+}
+
+.media-spot-text p {
+    max-width: 29rem;
+  }
+
+#media-spot {
+  background-color: rgba(242, 240, 241, 1);
+}
+
+#heroBtn {
+  background-color: rgba(86, 60, 45, 1);
+  color: white;
+  margin-top: 20px; /* Espacio entre el botón y el párrafo */
+}
+
+.media-spot-image {
+  max-width: 100%; /* Asegura que la imagen no exceda el contenedor */
+  height: auto;
+  margin-right: 20%;
+}
