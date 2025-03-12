@@ -24,7 +24,7 @@ export default function ShopMenu() {
   return (
     <Dropdown>
       <DropdownTrigger>
-        <Button className="bg-transparent p-0 " endContent={<ChevronDownIcon/>}>Shop</Button>
+        <Button className="bg-transparent p-0 " endContent={<ChevronDownIcon className="h-3 w-3 pointer-events-none"/>}>Shop</Button>
       </DropdownTrigger>
       <DropdownMenu aria-label="Dynamic Actions" items={items}>
         {(item) => (
