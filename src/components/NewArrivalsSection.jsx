@@ -1,8 +1,4 @@
 import ClothingCard from './ClotingCard';
-import camisetaCalculatorBlanco from '../images/Clothes/camisetaCalculatorBlancoArenaFrontal.jpg';
-import camisetaHotAzulMarino from '../images/Clothes/camisetaHotAzulMarinoFrontal.jpg';
-import camisetaTennisGrisOscura from '../images/Clothes/camisetaTennisGrisOscuraFrontal.jpg';
-import camisetaVirginityAzul from '../images/Clothes/camisetaVirginityAzulFrontal.jpg';
 import { Button } from '@heroui/react';
 import productos from '../data/productos.json';
 

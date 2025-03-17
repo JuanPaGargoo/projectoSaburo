@@ -1,8 +1,4 @@
 import ClothingCard from './ClotingCard';
-import sudaderaSwansMarron from '../images/Clothes/sudaderaSwansMarronFrontal.jpg';
-import pantalonVaqueroAzul from '../images/Clothes/pantalonVaqueroBasicoAzulFrontal.jpg';
-import camisetaPearlAzul from '../images/Clothes/camisetaPearlAzulFrontal.jpg';
-import sudaderaHotVerde from '../images/Clothes/sudaderaHotVerdeFrontal.jpg';
 import { Button } from '@heroui/react';
 import productos from '../data/productos.json';
 

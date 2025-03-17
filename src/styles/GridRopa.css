@@ -42,11 +42,11 @@
     overflow: hidden;
     z-index: 1;
     padding: 0; /* Elimina el padding para que las imágenes ocupen todo el espacio */
+    transition: transform 0.5s; /* Añade la transición aquí */
 }
 
 .grid div:hover {
     transform: scale(1.05);
-    transition: transform 0.5s;
 }
 
 .grid div img {
