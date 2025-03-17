@@ -1,14 +1,14 @@
 
 import NavbarSaburo from './components/NavbarSaburo'
-import Main from './components/Main'
 import Footer from './components/footer'
+import AppRouter from './router/AppRouter'
 
 function App() {
 
   return (
     <>
      <NavbarSaburo/> 
-      <Main/>
+      <AppRouter/>
       <Footer/>
 
     </>
