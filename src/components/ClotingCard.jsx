@@ -3,7 +3,7 @@ import { Card, Button, CardBody, Image } from "@heroui/react";
 import { HeartIcon as OutlineHeartIcon } from "@heroicons/react/24/outline";
 import { HeartIcon as SolidHeartIcon } from "@heroicons/react/24/solid";
 
-export default function ClothingCard({ name, price, image }) {
+export default function ClothingCard({id, name, price, image }) {
   const [isFavorite, setIsFavorite] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
   const [isClicked, setIsClicked] = useState(false);

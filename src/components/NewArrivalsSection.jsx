@@ -3,34 +3,43 @@ import camisetaCalculatorBlanco from '../images/Clothes/camisetaCalculatorBlanco
 import camisetaHotAzulMarino from '../images/Clothes/camisetaHotAzulMarinoFrontal.jpg';
 import camisetaTennisGrisOscura from '../images/Clothes/camisetaTennisGrisOscuraFrontal.jpg';
 import camisetaVirginityAzul from '../images/Clothes/camisetaVirginityAzulFrontal.jpg';
-
 import { Button } from '@heroui/react';
+import productos from '../data/productos.json';
 
 function NewArrivalsSection() {
+    const producto1 = productos[0];
+    const producto2 = productos[1];
+    const producto3 = productos[2];
+    const producto4 = productos[3];
+
   return (
     <div className='flex flex-col items-center justify-center gap-5 mt-8 pb-8 border-b-2 border-grey-200'>
         <h3 className='font-abrilFatface text-cafeCacao text-4xl'>New Arrivals</h3>
         <div className=' w-full h-[450px] flex items-center justify-center gap-8'>
             <ClothingCard
-            name="Camiseta Calculator Blanco Arena"
-            price={1239}
-            image={camisetaCalculatorBlanco}
+            id={producto1.id}
+            name={producto1.name}
+            price={producto1.price}
+            image={producto1.images.front}
             />
             <ClothingCard
-                name="Camiseta Hot Azul Marino"
-                price={1239}
-                image={camisetaHotAzulMarino}
+                id={producto2.id}
+                name={producto2.name}
+                price={producto2.price}
+                image={producto2.images.front}
             />
             <ClothingCard
-                name="Camiseta Tennis Gris Oscura"
-                price={1239}
-                image={camisetaTennisGrisOscura}
+                id={producto3.id}
+                name={producto3.name}
+                price={producto3.price}
+                image={producto3.images.front}
             />
 
             <ClothingCard
-                name="Camiseta Virginity Azul"
-                price={1239}
-                image={camisetaVirginityAzul}
+                id={producto4.id}
+                name={producto4.name}
+                price={producto4.price}
+                image={producto4.images.front}
             />      
             </div>
 
