@@ -4,7 +4,6 @@ import {
   NavbarBrand,
   NavbarContent,
   NavbarItem,
-  Link,
   Input,
   DropdownItem,
   DropdownTrigger,
@@ -12,12 +11,14 @@ import {
   DropdownMenu,
   Avatar,
 } from "@heroui/react";
+import { Link } from 'react-router-dom';
 
 import logoSecundario from '../icons/logoSecundario.png';
 import ShopMenu from '../components/ShopMenu';
 import avatarImage from '../images/avatar.jpg';
 import '../styles/NavbarSaburo.css';
-import { ShoppingCartIcon } from '@heroicons/react/24/outline';
+import { ShoppingCartIcon as ShoppingCardIconOutline } from '@heroicons/react/24/outline';
+import { ShoppingCartIcon as ShoppingCardIconSolid } from '@heroicons/react/24/solid';
 
 const itemsMenuMan = [
   { key: "shirtsMan", label: "Shirts" },
@@ -78,17 +79,17 @@ export default function NavbarSaburo() {
         </NavbarBrand>
         <NavbarContent className="hidden sm:flex gap-6">
           <NavbarItem>
-            <ShopMenu className="link-underline"   buttonText={"Man"} menuItems={itemsMenuMan} />
-            <ShopMenu className="link-underline"   buttonText={"Women"} menuItems={itemsMenuWomen} />
+            <ShopMenu className="link-underline" buttonText={"Man"} menuItems={itemsMenuMan} />
+            <ShopMenu className="link-underline" buttonText={"Women"} menuItems={itemsMenuWomen} />
           </NavbarItem>
           
           <NavbarItem>
-            <Link className="link-underline" color="primary" href="#">
+            <Link className="link-underline text-cafeCacao" to="#">
               On Sale
             </Link>
           </NavbarItem>
           <NavbarItem>
-            <Link className="link-underline" color="primary" href="#">
+            <Link className="link-underline text-cafeCacao" to="#">
               New Arrivals
             </Link>
           </NavbarItem>
@@ -108,7 +109,6 @@ export default function NavbarSaburo() {
           placeholder="Search for products..."
           size="md"
           startContent={<SearchIcon size={18} />}
-
         />
         <Dropdown placement="bottom-end">
           <DropdownTrigger>
@@ -126,23 +126,22 @@ export default function NavbarSaburo() {
               <p className="font-semibold text-cafeCacao">Signed in as</p>
               <p className="font-semibold text-cafeCacao">Juan Pablo Garcia</p>
             </DropdownItem>
-            <DropdownItem  color="secondary" className="text-cafeCacao" key="settings">My Settings</DropdownItem>
-            <DropdownItem  color="secondary" className="text-cafeCacao" key="team_settings">My Likes</DropdownItem>
-            <DropdownItem  color="secondary" className="text-cafeCacao" key="analytics">My Purchases</DropdownItem>
-            <DropdownItem  color="secondary" className="text-cafeCacao hover:text-cafeCacao" key="help_and_feedback">Help & Feedback</DropdownItem>
-            <DropdownItem   className="text-danger" key="logout" color="danger">
+            <DropdownItem color="secondary" className="text-cafeCacao" key="settings">My Settings</DropdownItem>
+            <DropdownItem color="secondary" className="text-cafeCacao" key="team_settings">My Likes</DropdownItem>
+            <DropdownItem color="secondary" className="text-cafeCacao" key="analytics">My Purchases</DropdownItem>
+            <DropdownItem color="secondary" className="text-cafeCacao hover:text-cafeCacao" key="help_and_feedback">Help & Feedback</DropdownItem>
+            <DropdownItem className="text-danger" key="logout" color="danger">
               Log Out
             </DropdownItem>
           </DropdownMenu>
         </Dropdown>
-       
       </NavbarContent>
-      <NavbarItem >
-          <Link color="primary" href="#">
-            <ShoppingCartIcon className="h-6 w-6 " />
-          </Link>
-        </NavbarItem>
-
+      <NavbarItem className="group">
+        <Link  to="#">
+          <ShoppingCardIconOutline className="h-6 w-6 text-cafeCacao group-hover:hidden" />
+          <ShoppingCardIconSolid className="h-6 w-6 text-cafeCacao hidden group-hover:block" />
+        </Link>
+      </NavbarItem>
     </Navbar>
   );
 }
