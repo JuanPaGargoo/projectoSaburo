@@ -15,7 +15,7 @@ function Footer() {
       <div className="footer-top pl-12">
         <div className="footer-logo">
           <img src={logoSecundario} alt="Saburo Logo" />
-          <p className="max-w-72 text-justify">We have clothes that suits your style and which you’re proud to wear. From women to men.</p>
+          <p className="max-w-60 text-justify">We have clothes that suits your style and which you’re proud to wear. From women to men.</p>
           <div className="footer-social">
             <a href="#"><i className="fab fa-twitter"></i></a>
             <a href="#"><i className="fab fa-facebook-f"></i></a>
