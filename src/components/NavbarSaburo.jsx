@@ -137,7 +137,7 @@ export default function NavbarSaburo() {
         </Dropdown>
       </NavbarContent>
       <NavbarItem className="group">
-        <Link  to="#">
+        <Link  to="/shopping-cart">
           <ShoppingCardIconOutline className="h-6 w-6 text-cafeCacao group-hover:hidden" />
           <ShoppingCardIconSolid className="h-6 w-6 text-cafeCacao hidden group-hover:block" />
         </Link>
