@@ -1,17 +1,24 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Card, Button, CardBody, Image } from "@heroui/react";
 import { HeartIcon as OutlineHeartIcon } from "@heroicons/react/24/outline";
 import { HeartIcon as SolidHeartIcon } from "@heroicons/react/24/solid";
 
-export default function ClothingCard({id, name, price, image }) {
+export default function ClothingCard({ id, name, price, image }) {
   const [isFavorite, setIsFavorite] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
   const [isClicked, setIsClicked] = useState(false);
+  const navigate = useNavigate();
 
   const toggleFavorite = () => {
     setIsFavorite(!isFavorite);
     setIsClicked(true);
     setTimeout(() => setIsClicked(false), 200); 
+  };
+
+  const handleImageClick = () => {
+    navigate('/product', { state: { id } }); 
+    window.scrollTo({ top: 0});
   };
 
   return (
@@ -24,7 +31,7 @@ export default function ClothingCard({id, name, price, image }) {
             src={image}
             height={250}
             width={200}
-            onClick={() => console.log('Image clicked')}
+            onClick={handleImageClick}
           />
         </div>
         <p className="text-tiny font-bold mb-2">{name}</p>

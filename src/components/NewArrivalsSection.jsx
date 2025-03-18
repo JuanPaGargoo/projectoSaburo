@@ -8,6 +8,7 @@ function NewArrivalsSection() {
     const producto3 = productos[2];
     const producto4 = productos[3];
 
+
   return (
     <div className='flex flex-col items-center justify-center gap-5 mt-8 pb-8 border-b-2 border-grey-200'>
         <h3 className='font-abrilFatface text-cafeCacao text-4xl'>New Arrivals</h3>

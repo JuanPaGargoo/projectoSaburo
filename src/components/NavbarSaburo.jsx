@@ -69,13 +69,17 @@ export const SearchIcon = ({ size = 24, strokeWidth = 1.5, width, height, ...pro
 };
 
 export default function NavbarSaburo() {
+  const handleLogoClick = () => {
+    window.scrollTo({ top: 0});
+  };
+
   return (
     <Navbar isBordered >
       <NavbarContent justify="start">
         <NavbarBrand >
-          <a href="">
+          <Link to="/" onClick={handleLogoClick}>
             <img className="h-15 w-auto object-contain" src={logoSecundario} alt="logoSaburo" />
-          </a>
+          </Link>
         </NavbarBrand>
         <NavbarContent className="hidden sm:flex gap-6">
           <NavbarItem>

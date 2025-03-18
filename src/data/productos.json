@@ -5,6 +5,7 @@
     "price": 1215,
     "IsDiscounted": false,
     "discount": 0,
+    "description": "Una camiseta de diseño minimalista con un estampado inspirado en cálculos matemáticos. Su color blanco arena la hace versátil para cualquier ocasión.",
     "images": {
       "front": "src/images/Clothes/camisetaCalculatorBlancoArenaFrontal.jpg",
       "back": "src/images/Clothes/camisetaCalculatorBlancoArenaPosterior.jpg",
@@ -17,6 +18,7 @@
     "price": 1239,
     "IsDiscounted": false,
     "discount": 0,
+    "description": "Una camiseta de algodón suave con un diseño vibrante que resalta la intensidad del color azul marino. Ideal para un look casual con un toque atrevido.",
     "images": {
       "front": "src/images/Clothes/camisetaHotAzulMarinoFrontal.jpg",
       "back": "src/images/Clothes/camisetaHotAzulMarinoPosterior.jpg",
@@ -29,11 +31,11 @@
     "price": 1239,
     "IsDiscounted": false,
     "discount": 0,
+    "description": "Diseño inspirado en la cerámica tradicional con un estampado elegante en tonos azules. Perfecta para quienes buscan estilo y comodidad.",
     "images": {
       "front": "src/images/Clothes/camisetaJarronAzulMarinoFrontal.jpg",
       "back": "src/images/Clothes/camisetaJarronAzulMarinoPosterior.jpg",
       "model": "src/images/Clothes/camisetaJarronAzulMarinoModelo.jpg"
-
     }
   },
   {
@@ -42,10 +44,11 @@
     "price": 1239,
     "IsDiscounted": false,
     "discount": 0,
+    "description": "Un diseño tropical con hojas de palmera en un tono verde vibrante. Perfecta para días de verano y amantes de la naturaleza.",
     "images": {
-        "front": "src/images/Clothes/camisetaPalmaresVerdeFrontal.jpg",
-        "back": "src/images/Clothes/camisetaPalmaresVerdePosterior.jpg",
-        "model": "src/images/Clothes/camisetaPalmaresVerdeModelo.jpg"
+      "front": "src/images/Clothes/camisetaPalmaresVerdeFrontal.jpg",
+      "back": "src/images/Clothes/camisetaPalmaresVerdePosterior.jpg",
+      "model": "src/images/Clothes/camisetaPalmaresVerdeModelo.jpg"
     }
   },
   {
@@ -54,6 +57,7 @@
     "price": 1239,
     "IsDiscounted": false,
     "discount": 0,
+    "description": "Una camiseta con un toque elegante en azul perla. Su tejido ligero la hace ideal para cualquier ocasión.",
     "images": {
       "front": "src/images/Clothes/camisetaPearlAzulFrontal.jpg",
       "back": "src/images/Clothes/camisetaPearlAzulPosterior.jpg",
@@ -66,10 +70,11 @@
     "price": 1239,
     "IsDiscounted": false,
     "discount": 0,
+    "description": "Inspirada en el mundo del tenis, esta camiseta de color gris oscuro combina un diseño deportivo con un estilo urbano.",
     "images": {
-        "front": "src/images/Clothes/camisetaTennisGrisOscuraFrontal.jpg",
-        "back": "src/images/Clothes/camisetaTennisGrisOscuraPosterior.jpg",
-        "model": "src/images/Clothes/camisetaTennisGrisOscuraModelo.jpg"
+      "front": "src/images/Clothes/camisetaTennisGrisOscuraFrontal.jpg",
+      "back": "src/images/Clothes/camisetaTennisGrisOscuraPosterior.jpg",
+      "model": "src/images/Clothes/camisetaTennisGrisOscuraModelo.jpg"
     }
   },
   {
@@ -78,6 +83,7 @@
     "price": 1239,
     "IsDiscounted": false,
     "discount": 0,
+    "description": "Una camiseta azul vibrante con un diseño original y llamativo que te hará destacar en cualquier ocasión.",
     "images": {
       "front": "src/images/Clothes/camisetaVirginityAzulFrontal.jpg",
       "back": "src/images/Clothes/camisetaVirginityAzulPosterior.jpg",
@@ -90,10 +96,11 @@
     "price": 1239,
     "IsDiscounted": false,
     "discount": 0,
+    "description": "Una sudadera en tono blanco crema con un diseño moderno y relajado. Perfecta para el día a día.",
     "images": {
-        "front": "src/images/Clothes/sudaderaCupsBlancoCremaFrontal.jpg",
-        "back": "src/images/Clothes/sudaderaCupsBlancoCremaPosterior.jpg",
-        "model": "src/images/Clothes/sudaderaCupsBlancoCremaModelo.jpg"
+      "front": "src/images/Clothes/sudaderaCupsBlancoCremaFrontal.jpg",
+      "back": "src/images/Clothes/sudaderaCupsBlancoCremaPosterior.jpg",
+      "model": "src/images/Clothes/sudaderaCupsBlancoCremaModelo.jpg"
     }
   },
   {
@@ -102,10 +109,11 @@
     "price": 1239,
     "IsDiscounted": false,
     "discount": 0,
+    "description": "Una sudadera con un diseño futurista en color azul marino. Combinación perfecta entre estilo y comodidad.",
     "images": {
-        "front": "src/images/Clothes/sudaderaGlobalSoonAzulMarinoFrontal.jpg",
-        "back": "src/images/Clothes/sudaderaGlobalSoonAzulMarinoPosterior.jpg",
-        "model": "src/images/Clothes/sudaderaGlobalSoonAzulMarinoModelo.jpg"
+      "front": "src/images/Clothes/sudaderaGlobalSoonAzulMarinoFrontal.jpg",
+      "back": "src/images/Clothes/sudaderaGlobalSoonAzulMarinoPosterior.jpg",
+      "model": "src/images/Clothes/sudaderaGlobalSoonAzulMarinoModelo.jpg"
     }
   },
   {
@@ -114,10 +122,11 @@
     "price": 1239,
     "IsDiscounted": false,
     "discount": 0,
+    "description": "Un diseño llamativo en verde con un estampado moderno. Ideal para un look urbano y desenfadado.",
     "images": {
-        "front": "src/images/Clothes/sudaderaHotVerdeFrontal.jpg",
-        "back": "src/images/Clothes/sudaderaHotVerdePosterior.jpg",
-        "model": "src/images/Clothes/sudaderaHotVerdeModelo.jpg"
+      "front": "src/images/Clothes/sudaderaHotVerdeFrontal.jpg",
+      "back": "src/images/Clothes/sudaderaHotVerdePosterior.jpg",
+      "model": "src/images/Clothes/sudaderaHotVerdeModelo.jpg"
     }
   },
   {
@@ -126,10 +135,11 @@
     "price": 1239,
     "IsDiscounted": false,
     "discount": 0,
+    "description": "Una sudadera inspirada en el arte clásico con un estampado elegante sobre fondo blanco crema.",
     "images": {
-        "front": "src/images/Clothes/sudaderaJarronBlancoCremaFrontal.jpg",
-        "back": "src/images/Clothes/sudaderaJarronBlancoCremaPosterior.jpg",
-        "model": "src/images/Clothes/sudaderaJarronBlancoCremaModelo.jpg"
+      "front": "src/images/Clothes/sudaderaJarronBlancoCremaFrontal.jpg",
+      "back": "src/images/Clothes/sudaderaJarronBlancoCremaPosterior.jpg",
+      "model": "src/images/Clothes/sudaderaJarronBlancoCremaModelo.jpg"
     }
   },
   {
@@ -138,10 +148,11 @@
     "price": 1239,
     "IsDiscounted": false,
     "discount": 0,
+    "description": "Una sudadera con un diseño artístico y elegante en gris oscuro, ideal para los amantes del arte y la moda urbana.",
     "images": {
-        "front": "src/images/Clothes/sudaderaSculptureGrisOscuroFrontal.jpg",
-        "back": "src/images/Clothes/sudaderaSculptureGrisOscuroPosterior.jpg",
-        "model": "src/images/Clothes/sudaderaSculptureGrisOscuroModelo.jpg"
+      "front": "src/images/Clothes/sudaderaSculptureGrisOscuroFrontal.jpg",
+      "back": "src/images/Clothes/sudaderaSculptureGrisOscuroPosterior.jpg",
+      "model": "src/images/Clothes/sudaderaSculptureGrisOscuroModelo.jpg"
     }
   },
   {
@@ -150,10 +161,11 @@
     "price": 1239,
     "IsDiscounted": false,
     "discount": 0,
+    "description": "Una sudadera en color verde vibrante con un estampado moderno y llamativo, ideal para un estilo casual con actitud.",
     "images": {
-        "front": "src/images/Clothes/sudaderaHotVerdeFrontal.jpg",
-        "back": "src/images/Clothes/sudaderaHotVerdePosterior.jpg",
-        "model": "src/images/Clothes/sudaderaHotVerdeModelo.jpg"
+      "front": "src/images/Clothes/sudaderaHotVerdeFrontal.jpg",
+      "back": "src/images/Clothes/sudaderaHotVerdePosterior.jpg",
+      "model": "src/images/Clothes/sudaderaHotVerdeModelo.jpg"
     }
   },
   {
@@ -162,22 +174,24 @@
     "price": 1239,
     "IsDiscounted": false,
     "discount": 0,
+    "description": "Diseño elegante y sobrio en color granate con un estampado sutil de cisnes, perfecto para un look sofisticado y moderno.",
     "images": {
-        "front": "src/images/Clothes/sudaderaSwansGranateFrontal.jpg",
-        "back": "src/images/Clothes/sudaderaSwansGranatePosterior.jpg",
-        "model": "src/images/Clothes/sudaderaSwansGranateModelo.jpg"
+      "front": "src/images/Clothes/sudaderaSwansGranateFrontal.jpg",
+      "back": "src/images/Clothes/sudaderaSwansGranatePosterior.jpg",
+      "model": "src/images/Clothes/sudaderaSwansGranateModelo.jpg"
     }
   },
   {
     "id": 15,
-    "name": "Sudadera Swans Marron",
+    "name": "Sudadera Swans Marrón",
     "price": 1239,
     "IsDiscounted": false,
     "discount": 0,
+    "description": "Una sudadera en tono marrón con un diseño inspirado en la naturaleza. Su corte cómodo y su tejido cálido la hacen perfecta para el día a día.",
     "images": {
-        "front": "src/images/Clothes/sudaderaSwansMarronFrontal.jpg",
-        "back": "src/images/Clothes/sudaderaSwansMarronPosterior.jpg",
-        "model": "src/images/Clothes/sudaderaSwansMarronModelo.jpg"
+      "front": "src/images/Clothes/sudaderaSwansMarronFrontal.jpg",
+      "back": "src/images/Clothes/sudaderaSwansMarronPosterior.jpg",
+      "model": "src/images/Clothes/sudaderaSwansMarronModelo.jpg"
     }
   }
 ]

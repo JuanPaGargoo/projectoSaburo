@@ -4,7 +4,6 @@ import NewArrivalsSection from './NewArrivalsSection'
 import TopSellingSection from './TopSellingSection'
 import GridRopa from './GridRopa'
 import CommentsSection from './CommentsSection'
-import NewsLetterSection from './NewsLetterSection'
 
 function Main() {
 
@@ -15,7 +14,6 @@ function Main() {
       <TopSellingSection/>
       <GridRopa/>
       <CommentsSection/>
-      <NewsLetterSection/>
     </>
     
   )

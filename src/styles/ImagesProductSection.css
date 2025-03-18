@@ -1,0 +1,44 @@
+.images-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  grid-column-gap: 10px; 
+  grid-row-gap: 10px; 
+  width: 35%;
+  margin: 0 ;
+}
+
+.image-container {
+  width: 100%;
+  height: 100%;
+  overflow: hidden; 
+  border-radius: 10px; 
+}
+
+.images-grid img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease; 
+}
+
+.image-container:hover {
+  border: 2px solid #693e26;
+}
+
+.image-container:hover img {
+  transform: scale(1.05);
+}
+
+.image-view:hover {
+  border: none; 
+}
+
+.image-view:hover img {
+  transform: none; 
+}
+
+.image-front { grid-area: 1 / 1 / 2 / 2; }
+.image-back { grid-area: 2 / 1 / 3 / 2; }
+.image-model { grid-area: 3 / 1 / 4 / 2; }
+.image-view { grid-area: 1 / 2 / 4 / 5; }

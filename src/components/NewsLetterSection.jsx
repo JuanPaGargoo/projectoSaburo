@@ -24,7 +24,7 @@ export const MailIcon = (props) => {
 
 function NewsLetterSection() {
   return (
-    <div className='flex flex-col items-center justify-center gap-5 mt-8 pb-8 '>
+    <div className='flex flex-col items-center justify-center gap-5 mt-8  mb-0'>
     <div className='bg-cafeCacao flex flex-row items-center justify-center gap-5 w-[70%] h-[150px] rounded-3xl'>
         <div className='flex flex-col items-center justify-center gap-5 w-[50%] p-6'> 
             <p className='font-abrilFatface  pb-6 text-3xl text-white'>STAY UP TO DATE ABOUT OUR LATEST OFFERS</p>

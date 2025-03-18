@@ -1,16 +1,17 @@
 import React from "react";
 import "../styles/Footer.css";
-
 import logoSecundario from '../icons/logoSecundario.png';
-
 import GPay from '../images/Footer/GPay.jpg';
 import APay from '../images/Footer/APay.jpg';
 import PayPal from '../images/Footer/Paypal.jpg';
 import MasterCard from '../images/Footer/MasterCard.jpg';
 import Visa from '../images/Footer/Visa.jpg';
+import NewsLetterSection from "./NewsLetterSection";
 
 function Footer() {
   return (
+    <>
+    <NewsLetterSection/>
     <footer className="footer">
       <div className="footer-top pl-12">
         <div className="footer-logo">
@@ -73,6 +74,7 @@ function Footer() {
         </div>
       </div>
     </footer>
+    </>
   );
 }
 
