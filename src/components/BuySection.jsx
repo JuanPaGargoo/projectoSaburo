@@ -6,7 +6,8 @@ const BuySection = ({ onTotalChange }) => {
     const [selectedProducts, setSelectedProducts] = useState([
         { ...productos[9], quantity: 1 },
         { ...productos[10], quantity: 1 },
-        { ...productos[11], quantity: 1 }
+        { ...productos[11], quantity: 1 },
+        { ...productos[12], quantity: 1 }
     ]);
 
     useEffect(() => {
@@ -24,9 +25,15 @@ const BuySection = ({ onTotalChange }) => {
         setSelectedProducts(prev => prev.filter(prod => prod.id !== id));
     };
 
+    if (selectedProducts.length === 0) return (
+        <div className='px-[5%] flex items-center justify-center gap-5 mb-8'>
+            
+        </div>
+    );
+
     return (
-        <div className='px-[5%] flex items-center justify-center gap-5 mt-8 mb-8 border-grey-200'>
-            <div className='p-3 w-full h-full flex-col items-center justify-center gap-8 border-2 border-grey-200 rounded-xl'>
+        <div className='px-[5%] flex items-center justify-center gap-5 mb-8'>
+            <div className='p-3 w-full h-full border-2 border-grey-200 rounded-xl max-h-[480px] overflow-y-auto scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-100'>
                 {selectedProducts.map((product) => (
                     <BuyCard 
                         key={product.id} 

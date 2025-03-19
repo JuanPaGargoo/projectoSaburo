@@ -9,7 +9,7 @@ function ShoppingMain() {
   return (
     <>
       <ShoppingCart />
-      <div className="items-center justify-between gap-5 mt-8 pb-8 border-grey-200 mx-14" style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)" }}>
+      <div className="items-start justify-between gap-5 mt-8 pb-8 border-grey-200 mx-14" style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)" }}>
         <BuySection onTotalChange={setSubtotal} />
         <OrderSummary subtotal={subtotal} />
       </div>
