@@ -41,10 +41,10 @@ function ProductSection() {
   };
 
   return (
-    <div className='flex flex-col items-center w-[100%] m-auto mt-10 '>
+    <div className='flex flex-col items-center w-[100%] m-auto mt-10'>
       <div className='flex flex-row w-[90%] justify-center gap-10'>
         <ImagesProductSection producto={producto} />
-        <div className='w-[40%]'>
+        <div className='w-[50%]'>
           <div className='pb-4 border-b-2 border-grey-200'>
             <h2 className='text-cafeCacao text-3xl font-bold mt-3'>{producto.name}</h2>
             <p className='text-cafeAvellana text-2xl font-bold mt-3'>${producto.price}</p>
@@ -86,7 +86,7 @@ function ProductSection() {
           </div>
         </div>
       </div>
-      <div className='w-[80%] mt-10'>
+      <div className='w-[80%] mt-10 flex flex-col items-center'>
         <NavBarProductSection onSelectSection={setSelectedSection} />
         {renderSection()}
       </div>
