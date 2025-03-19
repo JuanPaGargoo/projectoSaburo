@@ -6,6 +6,7 @@ import ImagesProductSection from './ImagesProductSection';
 import NavBarProductSection from './NavBarProductSection';
 import ProductDetails from './ProductDetails';
 import RatingAndReviews from './RatingAndReviews';
+import AlsoLikeSection from './AlsoLikeSection';
 
 function ProductSection() {
   const location = useLocation();
@@ -86,10 +87,11 @@ function ProductSection() {
           </div>
         </div>
       </div>
-      <div className='w-[80%] mt-10 flex flex-col items-center'>
+      <div className='w-[80%] mt-10 flex flex-col items-center pb-7 border-b-2 border-grey-200'>
         <NavBarProductSection onSelectSection={setSelectedSection} />
         {renderSection()}
       </div>
+      <AlsoLikeSection />
     </div>
   );
 }
