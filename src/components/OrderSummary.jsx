@@ -9,7 +9,7 @@ function OrderSummary({ subtotal, discountRate = 0.2, deliveryFee = 15 }) {
   const [promoCode, setPromoCode] = useState("");
 
   return (
-    <div className="bg-white p-6 rounded-lg shadow-md border w-full max-w-md">
+    <div className="bg-white p-6 rounded-lg shadow-md border w-full max-w-lg">
 
       <h1 className="font-bold text-xl text-cafeCacao mb-4">Order Summary</h1>
 
@@ -38,13 +38,13 @@ function OrderSummary({ subtotal, discountRate = 0.2, deliveryFee = 15 }) {
           onChange={(e) => setPromoCode(e.target.value)}
           className="bg-transparent flex-grow outline-none text-gray-600 placeholder-gray-400"
         />
-        <button className="bg-cafeCacao text-white px-4 py-2 rounded-full">Apply</button>
+        <Button className="bg-cafeCacao text-white px-4 py-2 rounded-full">Apply</Button>
       </div>
 
 
-      <button className="bg-cafeCacao text-white w-full flex items-center justify-center gap-2 py-3 rounded-full text-lg mt-4">
+      <Button className="bg-cafeCacao text-white w-full flex items-center justify-center gap-2 py-7 rounded-full text-lg mt-4">
         Go to Checkout <ArrowRightIcon className="h-5 w-5" />
-      </button>
+      </Button>
     </div>
   );
 }
