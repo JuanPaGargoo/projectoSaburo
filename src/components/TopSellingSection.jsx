@@ -10,7 +10,7 @@ function TopSellingSection() {
   
     return (
       <div className='flex flex-col items-center justify-center gap-5 mt-8 pb-8 border-b-2 border-grey-200'>
-          <h3 className='font-abrilFatface text-cafeCacao text-4xl'>New Arrivals</h3>
+          <h3 className='font-abrilFatface text-cafeCacao text-4xl'>Top Sellings</h3>
           <div className=' w-full h-[450px] flex items-center justify-center gap-8'>
               <ClothingCard
               id={producto1.id}

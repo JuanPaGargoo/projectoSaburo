@@ -83,7 +83,7 @@ export default function NavbarSaburo() {
         </NavbarBrand>
         <NavbarContent className="hidden sm:flex gap-6">
           <NavbarItem>
-            <ShopMenu className="link-underline" buttonText={"Man"} menuItems={itemsMenuMan} />
+            <ShopMenu className="link-underline" buttonText={"Men"} menuItems={itemsMenuMan} />
             <ShopMenu className="link-underline" buttonText={"Women"} menuItems={itemsMenuWomen} />
           </NavbarItem>
           
