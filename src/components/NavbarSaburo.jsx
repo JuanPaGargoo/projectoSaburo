@@ -130,6 +130,7 @@ export default function NavbarSaburo() {
             <DropdownItem color="secondary" className="text-cafeCacao" key="team_settings">My Likes</DropdownItem>
             <DropdownItem color="secondary" className="text-cafeCacao" key="analytics">My Purchases</DropdownItem>
             <DropdownItem color="secondary" className="text-cafeCacao hover:text-cafeCacao" key="help_and_feedback">Help & Feedback</DropdownItem>
+            <DropdownItem color="secondary" className="text-cafeCacao hover:text-cafeCacao" key="help_and_feedback"><Link  to="/login">Change Account</Link></DropdownItem>
             <DropdownItem className="text-danger" key="logout" color="danger">
               Log Out
             </DropdownItem>
