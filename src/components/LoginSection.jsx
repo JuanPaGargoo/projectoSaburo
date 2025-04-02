@@ -1,30 +1,37 @@
 import { useState } from "react";
 import { Button } from "@heroui/react";
 import { Link, useNavigate } from "react-router-dom";
-import { useAuth } from "./AuthContext"; // Importa el contexto
-import users from "../data/users.json"; // Importa el archivo JSON
+import { useAuth } from "./AuthContext";
+import axios from "axios"; // 👈 importante
 
 function LoginSection() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [rememberMe, setRememberMe] = useState(false);
-  const [error, setError] = useState(""); // Estado para manejar errores
-  const { setUser } = useAuth(); // Obtén la función para actualizar el usuario
+  const [error, setError] = useState("");
+  const { setUser } = useAuth();
   const navigate = useNavigate();
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
 
-    // Busca al usuario en el archivo JSON
-    const user = users.find(
-      (user) => user.email === email && user.password === password
-    );
+    try {
+      const response = await axios.post("http://localhost:8000/api/login", {
+        email,
+        password,
+      });
 
-    if (user) {
-      setUser(user); // Actualiza el usuario en el contexto
-      navigate("/"); // Redirige a la página principal
-    } else {
-      setError("Invalid email or password");
+      const user = response.data.user;
+
+      setUser(user); // Guardamos el usuario en el contexto
+      navigate("/"); // Redirigimos a la home
+    } catch (err) {
+      if (err.response && err.response.status === 401) {
+        setError("Correo o contraseña incorrectos");
+      } else {
+        setError("Error al conectar con el servidor");
+        console.error(err);
+      }
     }
   };
 
@@ -98,7 +105,7 @@ function LoginSection() {
               <p className="text-center text-gray-600 text-sm mt-4">
                 New User?{" "}
                 <Link to="/signup" className="text-cafeCacao hover:underline">
-                  SignUp
+                  Sign Up
                 </Link>
               </p>
             </form>

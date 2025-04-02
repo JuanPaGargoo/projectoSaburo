@@ -1,12 +1,44 @@
 import { useState } from "react";
 import { Button } from "@heroui/react";
-
+import axios from "axios"; // 👈 importamos axios
 
 function SignUpSection() {
   const [name, setName] = useState(""); 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    if (password !== confirmPassword) {
+      alert("Las contraseñas no coinciden.");
+      return;
+    }
+
+    try {
+      const response = await axios.post("http://localhost:8000/api/register", {
+        name,
+        email,
+        password,
+      });
+
+      alert("Usuario registrado correctamente 🎉");
+
+      // Limpiar formulario
+      setName("");
+      setEmail("");
+      setPassword("");
+      setConfirmPassword("");
+    } catch (error) {
+      if (error.response && error.response.data) {
+        alert(error.response.data.message || "Error al registrar usuario");
+      } else {
+        alert("Error al conectar con el servidor");
+      }
+      console.error(error);
+    }
+  };
 
   return (
     <div className="flex min-h-[calc(100vh-4.1rem)] items-center justify-center bg-gray-100 pt-5 overflow-hidden">
@@ -24,8 +56,7 @@ function SignUpSection() {
             <h2 className="text-2xl font-semibold mb-4">Sign Up</h2>
             <p className="text-gray-500 mb-6">Create your account to get started.</p>
 
-            <form>
-              {/* Campo de Nombre */}
+            <form onSubmit={handleSubmit}>
               <div className="mb-4">
                 <label className="block text-gray-600 text-sm mb-1">Name</label>
                 <input
@@ -37,7 +68,6 @@ function SignUpSection() {
                 />
               </div>
 
-              {/* Campo de Email */}
               <div className="mb-4">
                 <label className="block text-gray-600 text-sm mb-1">Email</label>
                 <input
@@ -49,7 +79,6 @@ function SignUpSection() {
                 />
               </div>
 
-              {/* Campo de Contraseña */}
               <div className="mb-4">
                 <label className="block text-gray-600 text-sm mb-1">Password</label>
                 <input
@@ -61,7 +90,20 @@ function SignUpSection() {
                 />
               </div>
 
-              <Button className="bg-cafeCacao text-white px-36 py-2 rounded-full">Sign Up</Button>
+              <div className="mb-4">
+                <label className="block text-gray-600 text-sm mb-1">Confirm Password</label>
+                <input
+                  type="password"
+                  value={confirmPassword}
+                  onChange={(e) => setConfirmPassword(e.target.value)}
+                  className="w-full border border-gray-300 p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-cafeCacao"
+                  placeholder="Confirm your password"
+                />
+              </div>
+
+              <Button type="submit" className="bg-cafeCacao text-white px-36 py-2 rounded-full">
+                Sign Up
+              </Button>
 
               <p className="text-center text-gray-600 text-sm mt-4">
                 Already have an account? <a href="/login" className="text-cafeCacao hover:underline">Login</a>
