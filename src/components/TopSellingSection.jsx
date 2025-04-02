@@ -1,6 +1,7 @@
 import ClothingCard from './ClotingCard';
 import { Button } from '@heroui/react';
 import productos from '../data/productos.json';
+import isotipo from '../icons/isotipo.png';
 
 function TopSellingSection() {
   const producto1 = productos[14];
@@ -10,7 +11,11 @@ function TopSellingSection() {
   
     return (
       <div className='flex flex-col items-center justify-center gap-5 mt-8 pb-8 border-b-2 border-grey-200'>
-          <h3 className='font-abrilFatface text-cafeCacao text-4xl'>Top Sellings</h3>
+          <div className='flex items-center gap-5'>
+                          <img src={isotipo} alt="Isotipo" className='w-7 h-7 transform scale-x-[-1]' />
+                          <h3 className='font-abrilFatface text-cafeCacao text-4xl'>Top Sellings</h3>
+                          <img src={isotipo} alt="Isotipo" className='w-7 h-7' />
+                      </div>
           <div className=' w-full h-[450px] flex items-center justify-center gap-8'>
               <ClothingCard
               id={producto1.id}

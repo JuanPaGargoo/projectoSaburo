@@ -94,10 +94,10 @@ export default function NavbarSaburo() {
             <Avatar
               isBordered
               as="button"
-              className="transition-transform"
+              className="transition-transform scale-80" 
               color="primary"
               size="sm"
-              src={user && user.avatar ? user.avatar : noAvatarImage} // Validar si el avatar es válido
+              src={user && user.avatar ? user.avatar : noAvatarImage}
             />
           </DropdownTrigger>
           <DropdownMenu aria-label="Profile Actions">

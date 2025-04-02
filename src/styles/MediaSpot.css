@@ -3,29 +3,55 @@
   color: rgba(105, 62, 38, 1);
   margin-left: 20%;
   text-align: justify;
+  height: 100%;
+  position: relative;
 }
 
 .media-spot-text h1 {
-  margin-bottom: 20px; /* Espacio entre el h1 y el p */
-  
+  margin-bottom: 20px;
 }
 
 .media-spot-text p {
-    max-width: 29rem;
-  }
+  max-width: 29rem;
+}
 
 #media-spot {
+  position: relative;
   background-color: rgba(242, 240, 241, 1);
+  z-index: 0;
+  overflow: hidden;
 }
 
 #heroBtn {
   background-color: rgba(86, 60, 45, 1);
   color: white;
-  margin-top: 20px; /* Espacio entre el botón y el párrafo */
+  margin-top: 20px;
 }
 
 .media-spot-image {
-  max-width: 100%; /* Asegura que la imagen no exceda el contenedor */
+  position: relative;
+  z-index: 2;
+  max-width: 100%;
   height: auto;
   margin-right: 20%;
+}
+
+.doodle-art {
+  position: absolute;
+  z-index: 1;
+  top: 38%;
+  left: 69%;
+  transform: translate(-50%, -50%) rotate(20deg);
+  opacity: 0.08;
+  width: 45%;
+  height: auto;
+}
+
+.isotipo {
+  position: absolute;
+  top: -5px;
+  right: 5px;
+  width: 100px;
+  height: auto;
+  z-index: 3;
 }
