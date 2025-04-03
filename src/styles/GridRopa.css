@@ -1,5 +1,6 @@
 #grid-ropa {
-    font-family: 'Satoshi', sans-serif;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
     color: rgba(105, 62, 38, 1);
     background-color: rgba(246, 239, 228, 0.395);
     border-radius: 20px; /* Bordes redondeados */
@@ -25,7 +26,7 @@
 .grid div p {
     z-index: 1;
     position: absolute;
-    top: 40px;
+    top: 50px;
     left: 10px;
     color: #693e26;
     font-size: 2rem; /* Aumenta el tamaño del texto */
@@ -39,7 +40,7 @@
     justify-content: center;
     font-size: 1.3rem;
     font-weight: bold;
-    background-color: rgba(242, 240, 241, 1); /* Color de fondo para los elementos de la cuadrícula */
+    background-color: rgb(255, 255, 255); /* Color de fondo para los elementos de la cuadrícula */
     border-radius: 10px; /* Bordes redondeados para los elementos de la cuadrícula */
     overflow: hidden;
     z-index: 1;
@@ -52,6 +53,7 @@
 .grid div:hover {
     transform: scale(1.05);
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Añade una sombra al hacer hover */
+    cursor: pointer;
 }
 
 .grid div img {
@@ -69,7 +71,7 @@
     margin: auto; /* Centra la imagen verticalmente */
     margin-left: 90px; /* Mueve la imagen más a la derecha */
     margin-top: -50px;
-    opacity: 0.6; /* Cambia la opacidad de la imagen */
+    opacity: 0.9; /* Cambia la opacidad de la imagen */
 }
 
 #Formal img {
@@ -79,7 +81,7 @@
     margin: auto; /* Centra la imagen verticalmente */
     margin-left: 95px; /* Mueve la imagen más a la derecha */
     margin-top: -30px;
-    opacity: 0.6; /* Cambia la opacidad de la imagen */
+    opacity: 0.9; /* Cambia la opacidad de la imagen */
 }
 
 #Casual img {
@@ -89,5 +91,5 @@
     margin: auto; /* Centra la imagen verticalmente */
     margin-left: 100px; /* Mueve la imagen más a la derecha */
     margin-top: -40px;
-    opacity: 0.6; /* Cambia la opacidad de la imagen */
+    opacity: 0.9; /* Cambia la opacidad de la imagen */
 }

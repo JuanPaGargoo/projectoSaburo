@@ -9,9 +9,9 @@ import gymImage from '../images/Grid/sabiFuerte.png';
 function GridRopa() {
     return (
         <div className="mt-8 items-center flex justify-center flex-col mx-16" id="grid-ropa">
-            <h1 className="text-4xl">BROWSE BY DRESS STYLE</h1>
+            <h1 className="text-4xl">Browse by Dress Styles</h1>
             
-            <div className="grid grid-cols-3 grid-rows-2 gap-8 font-abrilFatface font-oleo" id="grid-grid-ropa">
+            <div className="grid grid-cols-3 grid-rows-2 gap-8  " id="grid-grid-ropa">
                 <div id="Casual">
                     <p>Casual</p>
                     <img src={casualImage} alt="Casual" />
