@@ -6,6 +6,8 @@ import ShoppingMain from '../components/ShoppingMain'
 import ProductSection from '../components/ProductSection';
 import LoginSection from '../components/LoginSection';
 import SignUpSection from '../components/SignUpSection';
+import EditProfileSection from '../components/EditProfileSection';
+
 
 const AppRouter = () => {
     return (
@@ -15,6 +17,8 @@ const AppRouter = () => {
             <Route path="/product" element={<ProductSection />}/>
             <Route path="/login" element={<LoginSection />}/>
             <Route path="/signup" element={<SignUpSection />}/>
+            <Route path="/edit-profile/:userId" element={<EditProfileSection />} />
+
             <Route path="/*" element={<Navigate to="/"/>} />
         </Routes>
     );

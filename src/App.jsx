@@ -11,7 +11,7 @@ function App() {
     <AuthProvider>
       <NavbarSaburo />
       <AppRouter />
-      {location.pathname !== "/login" && location.pathname !== "/signup" && <Footer />}
+      {location.pathname !== "/login" && location.pathname !== "/signup"  && <Footer />}
     </AuthProvider>
   );
 }

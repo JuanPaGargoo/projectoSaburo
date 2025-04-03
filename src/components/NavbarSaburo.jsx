@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from "react";
 import {
   Navbar,
   NavbarBrand,
@@ -11,15 +11,16 @@ import {
   DropdownMenu,
   Avatar,
 } from "@heroui/react";
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from "react-router-dom";
 
-import logoSecundario from '../icons/logoSecundario.png';
-import ShopMenu from '../components/ShopMenu';
-import noAvatarImage from '../images/noAvatar.png';
+import logoSecundario from "../icons/logoSecundario.png";
+import ShopMenu from "../components/ShopMenu";
+import noAvatarImage from "../images/noAvatar.png";
 import { useAuth } from "./AuthContext"; // Importa el contexto
-import '../styles/NavbarSaburo.css';
-import { ShoppingCartIcon as ShoppingCardIconOutline } from '@heroicons/react/24/outline';
-import { ShoppingCartIcon as ShoppingCardIconSolid } from '@heroicons/react/24/solid';
+import axios from "axios"; // Importa axios para las solicitudes
+import "../styles/NavbarSaburo.css";
+import { ShoppingCartIcon as ShoppingCardIconOutline } from "@heroicons/react/24/outline";
+import { ShoppingCartIcon as ShoppingCardIconSolid } from "@heroicons/react/24/solid";
 
 const itemsMenuMan = [
   { key: "shirtsMan", label: "Shirts" },
@@ -40,15 +41,67 @@ const itemsMenuWomen = [
 ];
 
 export default function NavbarSaburo() {
-  const { user, setUser } = useAuth(); // Obtén el usuario y la función para cerrar sesión
+  const { user, setUser, refreshNavbar } = useAuth(); // Obtén el estado refreshNavbar
   const navigate = useNavigate();
 
+  // Recuperar datos del usuario al cargar el componente
+  useEffect(() => {
+    const fetchUserData = async () => {
+      try {
+        const response = await axios.get(`http://localhost:8000/api/users/${user.id}`);
+        const { name, profile_photo } = response.data;
+
+        // Actualiza el estado del usuario con los datos recuperados
+        setUser((prevUser) => ({
+          ...prevUser,
+          name,
+          avatar: profile_photo || noAvatarImage, // Usa la imagen predeterminada si no hay avatar
+        }));
+      } catch (error) {
+        console.error("Error al recuperar los datos del usuario:", error);
+      }
+    };
+
+    if (user && user.id) {
+      fetchUserData();
+    }
+  }, [user?.id, setUser, refreshNavbar]);
+  refreshNavbar
+
   const handleLogout = () => {
-    setUser(null); // Cierra la sesión
+    setUser(null);
+    navigate("/"); // Cierra la sesión
   };
 
   const handleNavigation = (path) => {
     navigate(path);
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+  
+    try {
+      const formData = new FormData();
+      if (profilePicture instanceof File) {
+        formData.append("profile_photo", profilePicture); // Solo agrega si es un archivo
+      }
+      formData.append("name", name);
+      formData.append("email", email);
+      if (password) formData.append("password", password);
+  
+      const response = await axios.post(`http://localhost:8000/api/users/${userId}/update`, formData, {
+        headers: { "Content-Type": "multipart/form-data" },
+      });
+  
+      setAlert({ visible: true, message: "Perfil actualizado correctamente 🎉", type: "success", variant: "faded" });
+  
+      // Limpiar formulario
+      setPassword(""); // No limpiar los demás campos porque ya están llenos con los datos del usuario
+    } catch (error) {
+      const errorMessage = error.response?.data?.message || "Error al conectar con el servidor";
+      setAlert({ visible: true, message: errorMessage, type: "error", variant: "faded" });
+      console.error(error);
+    }
   };
 
   return (
@@ -94,7 +147,7 @@ export default function NavbarSaburo() {
             <Avatar
               isBordered
               as="button"
-              className="transition-transform scale-80" 
+              className="transition-transform scale-80"
               color="primary"
               size="sm"
               src={user && user.avatar ? user.avatar : noAvatarImage}
@@ -107,7 +160,7 @@ export default function NavbarSaburo() {
                   color="secondary"
                   className="text-cafeCacao"
                   key="login"
-                  onAction={() => handleNavigation('/login')}
+                  onAction={() => handleNavigation("/login")}
                 >
                   Login
                 </DropdownItem>
@@ -115,7 +168,7 @@ export default function NavbarSaburo() {
                   color="secondary"
                   className="text-cafeCacao"
                   key="signup"
-                  onAction={() => handleNavigation('/signup')}
+                  onAction={() => handleNavigation("/signup")}
                 >
                   Sign Up
                 </DropdownItem>
@@ -125,6 +178,14 @@ export default function NavbarSaburo() {
                 <DropdownItem key="profile" className="h-14 gap-2 pointer-events-none">
                   <p className="font-semibold text-cafeCacao">Signed in as</p>
                   <p className="font-semibold text-cafeCacao">{user.name}</p>
+                </DropdownItem>
+                <DropdownItem
+                  color="secondary"
+                  className="text-cafeCacao"
+                  key="edit-profile"
+                  onAction={() => handleNavigation(`/edit-profile/${user.id}`)} // Navegar a Edit Profile
+                >
+                  Edit Profile
                 </DropdownItem>
                 <DropdownItem
                   color="secondary"

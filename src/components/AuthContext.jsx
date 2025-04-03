@@ -1,19 +1,21 @@
 // filepath: c:\Users\juanp\Documents\workspace\projectoSaburo\src\context\AuthContext.jsx
-import { createContext, useState, useContext } from "react";
+import React, { createContext, useContext, useState } from "react";
 
-// Crea el contexto
 const AuthContext = createContext();
 
-// Proveedor del contexto
-export const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(null); // Estado del usuario
+export function AuthProvider({ children }) {
+  const [user, setUser] = useState(null);
+  const [refreshNavbar, setRefreshNavbar] = useState(false); // Nuevo estado
+
+  const triggerNavbarRefresh = () => setRefreshNavbar((prev) => !prev); // Cambia el estado
 
   return (
-    <AuthContext.Provider value={{ user, setUser }}>
+    <AuthContext.Provider value={{ user, setUser, refreshNavbar, triggerNavbarRefresh }}>
       {children}
     </AuthContext.Provider>
   );
-};
+}
 
-// Hook para usar el contexto
-export const useAuth = () => useContext(AuthContext);
+export function useAuth() {
+  return useContext(AuthContext);
+}

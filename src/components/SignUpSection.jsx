@@ -1,18 +1,19 @@
-import { useState } from "react";
-import { Button } from "@heroui/react";
-import axios from "axios"; // 👈 importamos axios
+import { useState, useEffect } from "react";
+import { Button, Alert } from "@heroui/react"; // Importamos Alert
+import axios from "axios";
 
 function SignUpSection() {
   const [name, setName] = useState(""); 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [alert, setAlert] = useState({ visible: false, message: "", type: "", variant: "faded" }); // Estado para la alerta
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (password !== confirmPassword) {
-      alert("Las contraseñas no coinciden.");
+      setAlert({ visible: true, message: "Las contraseñas no coinciden.", type: "error", variant: "faded" });
       return;
     }
 
@@ -23,7 +24,7 @@ function SignUpSection() {
         password,
       });
 
-      alert("Usuario registrado correctamente 🎉");
+      setAlert({ visible: true, message: "Usuario registrado correctamente 🎉", type: "success", variant: "faded" });
 
       // Limpiar formulario
       setName("");
@@ -31,17 +32,39 @@ function SignUpSection() {
       setPassword("");
       setConfirmPassword("");
     } catch (error) {
-      if (error.response && error.response.data) {
-        alert(error.response.data.message || "Error al registrar usuario");
-      } else {
-        alert("Error al conectar con el servidor");
-      }
+      const errorMessage = error.response?.data?.message || "Error al conectar con el servidor";
+      setAlert({ visible: true, message: errorMessage, type: "error", variant: "faded" });
       console.error(error);
     }
   };
 
+  // Ocultar la alerta automáticamente después de 3 segundos
+  useEffect(() => {
+    if (alert.visible) {
+      const timer = setTimeout(() => {
+        setAlert({ visible: false, message: "", type: "", variant: "faded" });
+      }, 2000);
+
+      return () => clearTimeout(timer); // Limpiar el temporizador si el componente se desmonta
+    }
+  }, [alert.visible]);
+
   return (
-    <div className="flex min-h-[calc(100vh-4.1rem)] items-center justify-center bg-gray-100 pt-5 overflow-hidden">
+    <div className="flex min-h-[calc(100vh-4.1rem)] items-center justify-center bg-gray-100 pt-5 overflow-hidden relative">
+      {/* Mostrar alerta si está visible */}
+      {alert.visible && (
+        <div className="absolute top-10 left-1/2 transform -translate-x-1/2 z-50">
+          <Alert
+            color={alert.type === "success" ? "success" : "danger"}
+            description={alert.message}
+            isVisible={alert.visible}
+            title={alert.type === "success" ? "¡Éxito!" : "Error"}
+            variant={alert.variant}
+           
+          />
+        </div>
+      )}
+
       <div className="flex w-full max-w-4xl h-3/4 bg-white rounded-lg shadow-2xl overflow-hidden mx-auto">
         {/* Left Side */}
         <div className="w-2/4 flex flex-col items-center justify-center bg-gradient-to-br from-cafeAvellana to-cafeCacao">
@@ -52,12 +75,12 @@ function SignUpSection() {
 
         {/* Right Side */}
         <div className="w-3/5 flex items-center justify-center bg-transparent">
-          <div className="w-96 p-8">
-            <h2 className="text-2xl font-semibold mb-4">Sign Up</h2>
+          <div className="w-96 p-4">
+            <h2 className="text-2xl font-semibold mb-2">Sign Up</h2>
             <p className="text-gray-500 mb-6">Create your account to get started.</p>
 
             <form onSubmit={handleSubmit}>
-              <div className="mb-4">
+              <div className="mb-1">
                 <label className="block text-gray-600 text-sm mb-1">Name</label>
                 <input
                   type="text"

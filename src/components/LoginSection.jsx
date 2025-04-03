@@ -1,14 +1,14 @@
-import { useState } from "react";
-import { Button } from "@heroui/react";
+import { useState, useEffect } from "react";
+import { Button, Alert } from "@heroui/react"; // Importamos Alert
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "./AuthContext";
-import axios from "axios"; // 👈 importante
+import axios from "axios";
 
 function LoginSection() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [rememberMe, setRememberMe] = useState(false);
-  const [error, setError] = useState("");
+  const [alert, setAlert] = useState({ visible: false, message: "", type: "", variant: "faded" }); // Estado para la alerta
   const { setUser } = useAuth();
   const navigate = useNavigate();
 
@@ -24,19 +24,45 @@ function LoginSection() {
       const user = response.data.user;
 
       setUser(user); // Guardamos el usuario en el contexto
-      navigate("/"); // Redirigimos a la home
+      setAlert({ visible: true, message: "Inicio de sesión exitoso 🎉", type: "success", variant: "faded" });
+
+      // Redirigimos a la home después de un breve retraso
+      setTimeout(() => navigate("/"), 2000);
     } catch (err) {
-      if (err.response && err.response.status === 401) {
-        setError("Correo o contraseña incorrectos");
-      } else {
-        setError("Error al conectar con el servidor");
-        console.error(err);
-      }
+      const errorMessage = err.response?.status === 401
+        ? "Correo o contraseña incorrectos"
+        : "Error al conectar con el servidor";
+      setAlert({ visible: true, message: errorMessage, type: "error", variant: "faded" });
+      console.error(err);
     }
   };
 
+  // Ocultar la alerta automáticamente después de 3 segundos
+  useEffect(() => {
+    if (alert.visible) {
+      const timer = setTimeout(() => {
+        setAlert({ visible: false, message: "", type: "", variant: "faded" });
+      }, 2000);
+
+      return () => clearTimeout(timer); // Limpiar el temporizador si el componente se desmonta
+    }
+  }, [alert.visible]);
+
   return (
-    <div className="flex min-h-[calc(100vh-4.1rem)] items-center justify-center bg-gray-100 pt-5 overflow-hidden">
+    <div className="flex min-h-[calc(100vh-4.1rem)] items-center justify-center bg-gray-100 pt-5 overflow-hidden relative">
+      {/* Mostrar alerta si está visible */}
+      {alert.visible && (
+        <div className="absolute top-10 left-1/2 transform -translate-x-1/2 z-50">
+          <Alert
+            color={alert.type === "success" ? "success" : "danger"}
+            description={alert.message}
+            isVisible={alert.visible}
+            title={alert.type === "success" ? "¡Éxito!" : "Error"}
+            variant={alert.variant}
+          />
+        </div>
+      )}
+
       <div className="flex w-full max-w-4xl h-3/4 bg-white rounded-lg shadow-2xl overflow-hidden mx-auto">
         {/* Left Side */}
         <div className="w-2/4 flex flex-col items-center justify-center bg-gradient-to-br from-cafeAvellana to-cafeCacao">
@@ -90,10 +116,6 @@ function LoginSection() {
                   Forgot Password?
                 </a>
               </div>
-
-              {error && (
-                <p className="text-red-500 text-sm mb-4">{error}</p>
-              )}
 
               <Button
                 type="submit"
