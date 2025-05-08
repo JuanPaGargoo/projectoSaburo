@@ -48,14 +48,14 @@ export default function NavbarSaburo() {
   useEffect(() => {
     const fetchUserData = async () => {
       try {
-        const response = await axios.get(`http://localhost:8000/api/users/${user.id}`);
-        const { name, profile_photo } = response.data;
+        const response = await axios.get(`http://localhost:3000/users/${user.id}`);
+        const { name, profilePhoto } = response.data;
 
         // Actualiza el estado del usuario con los datos recuperados
         setUser((prevUser) => ({
           ...prevUser,
           name,
-          avatar: profile_photo || noAvatarImage, // Usa la imagen predeterminada si no hay avatar
+          avatar: profilePhoto || noAvatarImage, // Usa la imagen predeterminada si no hay avatar
         }));
       } catch (error) {
         console.error("Error al recuperar los datos del usuario:", error);
@@ -77,32 +77,6 @@ export default function NavbarSaburo() {
     navigate(path);
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-  
-    try {
-      const formData = new FormData();
-      if (profilePicture instanceof File) {
-        formData.append("profile_photo", profilePicture); // Solo agrega si es un archivo
-      }
-      formData.append("name", name);
-      formData.append("email", email);
-      if (password) formData.append("password", password);
-  
-      const response = await axios.post(`http://localhost:8000/api/users/${userId}/update`, formData, {
-        headers: { "Content-Type": "multipart/form-data" },
-      });
-  
-      setAlert({ visible: true, message: "Perfil actualizado correctamente 🎉", type: "success", variant: "faded" });
-  
-      // Limpiar formulario
-      setPassword(""); // No limpiar los demás campos porque ya están llenos con los datos del usuario
-    } catch (error) {
-      const errorMessage = error.response?.data?.message || "Error al conectar con el servidor";
-      setAlert({ visible: true, message: errorMessage, type: "error", variant: "faded" });
-      console.error(error);
-    }
-  };
 
   return (
     <Navbar isBordered>

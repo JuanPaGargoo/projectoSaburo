@@ -24,7 +24,7 @@ function EditProfileSection() {
   useEffect(() => {
     const fetchUserData = async () => {
       try {
-        const response = await axios.get(`http://localhost:8000/api/users/${userId}`);
+        const response = await axios.get(`http://localhost:3000/users/${userId}`);
         const { name, email, profile_photo } = response.data;
 
         setName(name);
@@ -56,13 +56,13 @@ function EditProfileSection() {
     try {
       const formData = new FormData();
       if (profilePicture instanceof File) {
-        formData.append("profile_photo", profilePicture); // Solo agrega si es un archivo
+        formData.append("profilePhoto", profilePicture); // Solo agrega si es un archivo
       }
       formData.append("name", name);
       formData.append("email", email);
       if (password) formData.append("password", password);
 
-      const response = await axios.post(`http://localhost:8000/api/users/${userId}/update`, formData, {
+      const response = await axios.patch(`http://localhost:3000/users/${userId}/update`, formData, {
         headers: { "Content-Type": "multipart/form-data" },
       });
 

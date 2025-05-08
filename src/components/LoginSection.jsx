@@ -16,7 +16,7 @@ function LoginSection() {
     e.preventDefault();
 
     try {
-      const response = await axios.post("http://localhost:8000/api/login", {
+      const response = await axios.post("http://localhost:3000/users/login", {
         email,
         password,
       });

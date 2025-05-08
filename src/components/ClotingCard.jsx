@@ -43,11 +43,11 @@ export default function ClothingCard({ id, name, price, image }) {
           <div
             onClick={toggleFavorite}
             onMouseEnter={() => setIsHovered(true)}
-            onMouseLeave={() => setIsHovered(false)}
+            onMouseOut={() => setIsHovered(false)} // Cambiado de onMouseLeave a onMouseOut
             className={`cursor-pointer transition-transform ${isClicked ? 'transform scale-110' : ''}`}
           >
             {isFavorite || isHovered ? (
-              <SolidHeartIcon className={`h-7 w-7 ${isHovered ? 'text-cafeAvellana  ' : 'text-cafeCacao'}`} />
+              <SolidHeartIcon className={`h-7 w-7 ${isHovered ? 'text-cafeAvellana' : 'text-cafeCacao'}`} />
             ) : (
               <OutlineHeartIcon className="h-7 w-7 text-cafeCacao" />
             )}

@@ -2,7 +2,7 @@
   {
     "id": 1,
     "name": "Camiseta Calculator Blanco Arena",
-    "price": 1215,
+    "price": 1215.00,
     "IsDiscounted": false,
     "discount": 0,
     "description": "Una camiseta de diseño minimalista con un estampado inspirado en cálculos matemáticos. Su color blanco arena la hace versátil para cualquier ocasión.",
@@ -15,7 +15,7 @@
   {
     "id": 2,
     "name": "Camiseta Hot Azul Marino",
-    "price": 1239,
+    "price": 1239.00,
     "IsDiscounted": false,
     "discount": 0,
     "description": "Una camiseta de algodón suave con un diseño vibrante que resalta la intensidad del color azul marino. Ideal para un look casual con un toque atrevido.",
@@ -28,7 +28,7 @@
   {
     "id": 3,
     "name": "Camiseta Jarron Azul Marino",
-    "price": 1239,
+    "price": 1239.00,
     "IsDiscounted": false,
     "discount": 0,
     "description": "Diseño inspirado en la cerámica tradicional con un estampado elegante en tonos azules. Perfecta para quienes buscan estilo y comodidad.",
@@ -41,7 +41,7 @@
   {
     "id": 4,
     "name": "Camiseta Palmares Verde",
-    "price": 1239,
+    "price": 1239.00,
     "IsDiscounted": false,
     "discount": 0,
     "description": "Un diseño tropical con hojas de palmera en un tono verde vibrante. Perfecta para días de verano y amantes de la naturaleza.",
@@ -54,7 +54,7 @@
   {
     "id": 5,
     "name": "Camiseta Pearl Azul",
-    "price": 1239,
+    "price": 1239.00,
     "IsDiscounted": false,
     "discount": 0,
     "description": "Una camiseta con un toque elegante en azul perla. Su tejido ligero la hace ideal para cualquier ocasión.",
@@ -67,7 +67,7 @@
   {
     "id": 6,
     "name": "Camiseta Tennis Gris Oscura",
-    "price": 1239,
+    "price": 1239.00,
     "IsDiscounted": false,
     "discount": 0,
     "description": "Inspirada en el mundo del tenis, esta camiseta de color gris oscuro combina un diseño deportivo con un estilo urbano.",
@@ -80,7 +80,7 @@
   {
     "id": 7,
     "name": "Camiseta Virginity Azul",
-    "price": 1239,
+    "price": 1239.00,
     "IsDiscounted": false,
     "discount": 0,
     "description": "Una camiseta azul vibrante con un diseño original y llamativo que te hará destacar en cualquier ocasión.",
@@ -93,7 +93,7 @@
   {
     "id": 8,
     "name": "Sudadera Cups Blanco Crema",
-    "price": 1239,
+    "price": 1239.00,
     "IsDiscounted": false,
     "discount": 0,
     "description": "Una sudadera en tono blanco crema con un diseño moderno y relajado. Perfecta para el día a día.",
@@ -106,7 +106,7 @@
   {
     "id": 9,
     "name": "Sudadera Global Soon Azul Marino",
-    "price": 1239,
+    "price": 1239.00,
     "IsDiscounted": false,
     "discount": 0,
     "description": "Una sudadera con un diseño futurista en color azul marino. Combinación perfecta entre estilo y comodidad.",
@@ -119,7 +119,7 @@
   {
     "id": 10,
     "name": "Sudadera Hot Verde",
-    "price": 1239,
+    "price": 1239.00,
     "IsDiscounted": false,
     "discount": 0,
     "description": "Un diseño llamativo en verde con un estampado moderno. Ideal para un look urbano y desenfadado.",
@@ -132,7 +132,7 @@
   {
     "id": 11,
     "name": "Sudadera Jarron Blanco Crema",
-    "price": 1239,
+    "price": 1239.00,
     "IsDiscounted": false,
     "discount": 0,
     "description": "Una sudadera inspirada en el arte clásico con un estampado elegante sobre fondo blanco crema.",
@@ -145,7 +145,7 @@
   {
     "id": 12,
     "name": "Sudadera Sculpture Gris Oscuro",
-    "price": 1239,
+    "price": 1239.00,
     "IsDiscounted": false,
     "discount": 0,
     "description": "Una sudadera con un diseño artístico y elegante en gris oscuro, ideal para los amantes del arte y la moda urbana.",
@@ -158,7 +158,7 @@
   {
     "id": 13,
     "name": "Sudadera Hot Verde",
-    "price": 1239,
+    "price": 1239.00,
     "IsDiscounted": false,
     "discount": 0,
     "description": "Una sudadera en color verde vibrante con un estampado moderno y llamativo, ideal para un estilo casual con actitud.",
@@ -171,7 +171,7 @@
   {
     "id": 14,
     "name": "Sudadera Swans Granate",
-    "price": 1239,
+    "price": 1239.00,
     "IsDiscounted": false,
     "discount": 0,
     "description": "Diseño elegante y sobrio en color granate con un estampado sutil de cisnes, perfecto para un look sofisticado y moderno.",
@@ -184,7 +184,7 @@
   {
     "id": 15,
     "name": "Sudadera Swans Marrón",
-    "price": 1239,
+    "price": 1239.00,
     "IsDiscounted": false,
     "discount": 0,
     "description": "Una sudadera en tono marrón con un diseño inspirado en la naturaleza. Su corte cómodo y su tejido cálido la hacen perfecta para el día a día.",

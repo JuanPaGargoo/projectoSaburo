@@ -3,7 +3,7 @@ import "../styles/GridRopa.css";
 
 import casualImage from '../images/Grid/sabiCasual.png';
 import formalImage from '../images/Grid/sabiTraje.png';
-import partyImage from '../images/Grid/fiesta.jpg';
+import partyImage from '../images/Grid/sabiFiesta.png';
 import gymImage from '../images/Grid/sabiFuerte.png';
 
 function GridRopa() {
