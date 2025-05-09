@@ -1,12 +1,15 @@
 import { TrashIcon } from "@heroicons/react/24/solid";
 import { useState, useEffect } from 'react';
+import { API_ENDPOINTS } from '../../constants/api'; 
 
-function BuyCard({ product, initialQuantity, size, onQuantityChange, onRemove }) {
-  const { id, name, price, images } = product;
+function BuyCard({ product = {}, initialQuantity = 1, size = "N/A", onQuantityChange = () => {}, onRemove = () => {} }) {
+  const { id, name, price, frontImage } = product;
   const [quantity, setQuantity] = useState(initialQuantity);
 
   useEffect(() => {
-    onQuantityChange(id, quantity); 
+    if (id) {
+      onQuantityChange(id, quantity);
+    }
   }, [quantity, id, onQuantityChange]);
 
   const handleIncrement = () => {
@@ -20,13 +23,23 @@ function BuyCard({ product, initialQuantity, size, onQuantityChange, onRemove })
   };
 
   const handleRemove = () => {
-    onRemove(id); 
+    if (id) {
+      onRemove(id);
+    }
   };
+
+  if (!id || !name || !price || !frontImage) {
+    return <p className="text-red-500">Error: Missing product data</p>;
+  }
 
   return (
     <div className="flex items-center justify-between w-full h-full p-4 bg-white rounded-lg shadow-sm">
       <div className="h-48 flex-shrink-0">
-        <img src={images.front} alt={name} className="w-full h-full object-cover rounded-md" />
+        <img
+          src={`${API_ENDPOINTS.IMAGES}/${frontImage}`}
+          alt={name}
+          className="w-full h-full object-cover rounded-md"
+        />
       </div>
 
       <div className="flex flex-col flex-grow px-4">

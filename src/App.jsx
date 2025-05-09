@@ -4,7 +4,6 @@ import NavbarSaburo from "./components/layout/NavbarSaburo";
 import Footer from "./components/layout/Footer";
 import AppRouter from "./router/AppRouter";
 import { AuthProvider } from "./context/AuthContext";
-import SearchModal from "./components/shared/SearchModal"; // Import the SearchModal
 
 function App() {
   const location = useLocation();
@@ -52,15 +51,12 @@ function App() {
 
   return (
     <AuthProvider>
-      <NavbarSaburo onSearchChange={handleSearchChange} /> {/* Pass search handler */}
-      <AppRouter
-        isModalOpen={isModalOpen}
-        searchQuery={searchQuery} // Pass searchQuery to the modal
-        onModalClose={handleModalClose}
-      />
+      <NavbarSaburo />
+      <AppRouter />
       {location.pathname !== "/login" &&
         location.pathname !== "/signup" &&
         !location.pathname.startsWith("/edit-profile") && <Footer />}
+      </CartProvider>
     </AuthProvider>
   );
 }
