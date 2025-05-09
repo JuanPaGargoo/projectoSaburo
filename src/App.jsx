@@ -56,7 +56,6 @@ function App() {
       {location.pathname !== "/login" &&
         location.pathname !== "/signup" &&
         !location.pathname.startsWith("/edit-profile") && <Footer />}
-      </CartProvider>
     </AuthProvider>
   );
 }
