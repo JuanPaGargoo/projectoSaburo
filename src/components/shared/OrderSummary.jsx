@@ -1,11 +1,32 @@
 import React, { useState } from "react";
 import { ArrowRightIcon, TagIcon } from "@heroicons/react/24/solid";
 import { Button } from "@heroui/react";
+import axios from "axios";
 
 function OrderSummary({ subtotal, discountRate = 0.2, deliveryFee = 15 }) {
-  const discount = (subtotal * discountRate).toFixed(2); 
-  const total = (subtotal - discount + deliveryFee).toFixed(2);
+  const discount = (subtotal * discountRate).toFixed(2);
+  const total = (subtotal - parseFloat(discount) + deliveryFee).toFixed(2);
   const [promoCode, setPromoCode] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const handleCheckout = async () => {
+    try {
+      setLoading(true);
+
+      const response = await axios.post("http://localhost:3000/api/paypal/create-order", {
+        amount: total,
+      });
+
+      const { approvalUrl } = response.data;
+
+      window.location.href = approvalUrl;
+    } catch (error) {
+      console.error("Error al crear orden de pago:", error);
+      alert("Hubo un problema al iniciar el pago.");
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <div className="bg-white p-6 rounded-lg shadow-md border w-full max-w-lg">
@@ -13,13 +34,13 @@ function OrderSummary({ subtotal, discountRate = 0.2, deliveryFee = 15 }) {
 
       <div className="grid grid-cols-2 gap-2 text-lg">
         <span>Subtotal</span>
-        <span className="text-right font-semibold">${subtotal.toFixed(2)}</span>  
+        <span className="text-right font-semibold">${subtotal.toFixed(2)}</span>
 
         <span>Discount (-{(discountRate * 100).toFixed(0)}%)</span>
         <span className="text-right text-red-500 font-semibold">-${discount}</span>
 
         <span>Delivery Fee</span>
-        <span className="text-right font-semibold">${deliveryFee.toFixed(2)}</span>  
+        <span className="text-right font-semibold">${deliveryFee.toFixed(2)}</span>
 
         <hr className="col-span-2 my-2" />
 
@@ -39,8 +60,13 @@ function OrderSummary({ subtotal, discountRate = 0.2, deliveryFee = 15 }) {
         <Button className="bg-cafeCacao text-white px-4 py-2 rounded-full">Apply</Button>
       </div>
 
-      <Button className="bg-cafeCacao text-white w-full flex items-center justify-center gap-2 py-7 rounded-full text-lg mt-4">
-        Go to Checkout <ArrowRightIcon className="h-5 w-5" />
+      <Button
+        onClick={handleCheckout}
+        className="bg-cafeCacao text-white w-full flex items-center justify-center gap-2 py-7 rounded-full text-lg mt-4"
+        disabled={loading}
+      >
+        {loading ? "Redirecting..." : "Go to Checkout"}
+        <ArrowRightIcon className="h-5 w-5" />
       </Button>
     </div>
   );
