@@ -7,7 +7,9 @@ import ImagesProductSection from '../shared/ImagesProductSection';
 import NavBarProductSection from '../shared/NavBarProductSection';
 import ProductDetails from '../shared/ProductDetails';
 import RatingAndReviews from '../shared/RatingAndReviews';
-import '../../styles/productSection.css'; 
+import '../../styles/productSection.css';
+import useRandomProducts from '../../hooks/useRandomProducts';
+import ProductDisplaySection from '../shared/ProductDisplaySection'; 
 
 function ProductSection() {
   const location = useLocation();
@@ -16,6 +18,7 @@ function ProductSection() {
   const [selectedSize, setSelectedSize] = useState(null);
   const [quantity, setQuantity] = useState(1);
   const [selectedSection, setSelectedSection] = useState('details');
+  const randomProducts = useRandomProducts(); // Move hook call here
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -117,6 +120,7 @@ function ProductSection() {
         <NavBarProductSection onSelectSection={setSelectedSection} />
         {renderSection()}
       </div>
+      <ProductDisplaySection title="You Might Also Like" products={randomProducts} showButton={true} />
     </div>
   );
 }

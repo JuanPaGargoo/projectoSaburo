@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Navbar,
   NavbarBrand,
@@ -10,15 +10,15 @@ import {
   Dropdown,
   DropdownMenu,
   Avatar,
-} from "@heroui/react";
+} from "@heroui/react"; // Ensure @heroui/react is installed and correctly configured
 import { Link, useNavigate } from "react-router-dom";
 
-import logoSecundario from "../../icons/logoSecundario.png";
-import ShopMenu from "../shared/ShopMenu"; // Corrige la ruta de ShopMenu
-import noAvatarImage from "../../images/noAvatar.png";
-import { useAuth } from "../../context/AuthContext"; // Corrige la ruta de AuthContext
-import axios from "axios"; // Importa axios para las solicitudes
-import "../../styles/NavbarSaburo.css";
+import logoSecundario from "../../icons/logoSecundario.png"; // Ensure the file path is correct
+import ShopMenu from "../shared/ShopMenu"; // Ensure ShopMenu is exported correctly
+import noAvatarImage from "../../images/noAvatar.png"; // Ensure the file path is correct
+import { useAuth } from "../../context/AuthContext"; // Ensure useAuth is exported correctly
+import axios from "axios"; // Ensure axios is installed
+import "../../styles/NavbarSaburo.css"; // Ensure the CSS file exists
 import { ShoppingCartIcon as ShoppingCardIconOutline } from "@heroicons/react/24/outline";
 import { ShoppingCartIcon as ShoppingCardIconSolid } from "@heroicons/react/24/solid";
 
@@ -28,21 +28,22 @@ const itemsMenuMan = [
   { key: "pantsMan", label: "Pants" },
   { key: "hoodiesMan", label: "Hoodies" },
   { key: "hantsCapsMan", label: "Hats | Caps" },
-  { key: "accesoriesMan", label: "Accesories" },
+  { key: "accesoriesan", label: "Accessories" },
 ];
 
-const itemsMenuWomen = [
-  { key: "shirtsWomen", label: "Shirts" },
-  { key: "t-shirtsWomen", label: "T-Shirts" },
-  { key: "pantsWomen", label: "Pants" },
-  { key: "hoodiesWomen", label: "Hoodies" },
-  { key: "hantsCapsWomen", label: "Hats | Caps" },
-  { key: "accesoriesWomen", label: "Accesories" },
+const itemsMenuWoman = [
+  { key: "shirtsWoman", label: "Shirts" },
+  { key: "t-shirtsWoman", label: "T-Shirts" },
+  { key: "pantsWoman", label: "Pants" },
+  { key: "hoodiesWoman", label: "Hoodies" },
+  { key: "hantsCapsWoman", label: "Hats | Caps" },
+  { key: "accesoriesWoman", label: "Accessories" },
 ];
 
 export default function NavbarSaburo() {
   const { user, setUser, refreshNavbar } = useAuth(); // Obtén el estado refreshNavbar
   const navigate = useNavigate();
+  const [searchQuery, setSearchQuery] = useState("");
 
   // Recuperar datos del usuario al cargar el componente
   useEffect(() => {
@@ -77,6 +78,9 @@ export default function NavbarSaburo() {
     navigate(path);
   };
 
+  const handleSearchChange = (e) => {
+    setSearchQuery(e.target.value);
+  };
 
   return (
     <Navbar isBordered>
@@ -88,16 +92,16 @@ export default function NavbarSaburo() {
         </NavbarBrand>
         <NavbarContent className="hidden sm:flex gap-6">
           <NavbarItem>
-            <ShopMenu className="link-underline" buttonText={"Man"} menuItems={itemsMenuMan} />
-            <ShopMenu className="link-underline" buttonText={"Woman"} menuItems={itemsMenuWomen} />
+            <ShopMenu className="link-underline" buttonText="Man" menuItems={itemsMenuMan} gender="man" />
+            <ShopMenu className="link-underline" buttonText="Woman" menuItems={itemsMenuWoman} gender="woman" />
           </NavbarItem>
           <NavbarItem>
-            <Link className="link-underline text-cafeCacao" to="#">
+            <Link className="link-underline text-cafeCacao" to="/filtered-products?title=On+Sale&discount=true">
               On Sale
             </Link>
           </NavbarItem>
           <NavbarItem>
-            <Link className="link-underline text-cafeCacao" to="#">
+            <Link className="link-underline text-cafeCacao" to="/filtered-products?title=New+Arrivals&recent=true">
               New Arrivals
             </Link>
           </NavbarItem>
@@ -107,6 +111,8 @@ export default function NavbarSaburo() {
       <NavbarContent as="div" className="items-center" justify="end">
         <Input
           isClearable
+          value={searchQuery}
+          onChange={handleSearchChange}
           classNames={{
             base: "max-w-full sm:max-w-[25rem] h-10",
             mainWrapper: "h-full",

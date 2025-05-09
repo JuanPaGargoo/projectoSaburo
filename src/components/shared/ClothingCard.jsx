@@ -42,14 +42,14 @@ export default function ClothingCard({ id }) {
   }
 
   return (
-    <Card className="py-1 w-[220px] select-none">
+    <Card className="py-1 w-[220px] h-[375px] select-none">
       <CardBody className="overflow-visible">
         <div className="relative overflow-hidden rounded-xl mb-3">
           <Image
             alt={product.name}
             className="object-cover transition-transform duration-300 hover:scale-110 cursor-pointer"
             src={`${API_ENDPOINTS.IMAGES}/${product.frontImage}`}
-            height={250}
+            height={230}
             width={200}
             onClick={handleImageClick}
           />

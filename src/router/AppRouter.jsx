@@ -7,6 +7,7 @@ import ProductSection from '../components/pages/ProductSection';
 import LoginSection from '../components/auth/LoginSection';
 import SignUpSection from '../components/auth/SignUpSection';
 import EditProfileSection from '../components/auth/EditProfileSection';
+import FilteredProductsPage from '../components/pages/FilteredProductsPage'; // Importar el componente
 
 
 const AppRouter = () => {
@@ -18,7 +19,7 @@ const AppRouter = () => {
             <Route path="/login" element={<LoginSection />}/>
             <Route path="/signup" element={<SignUpSection />}/>
             <Route path="/edit-profile/:userId" element={<EditProfileSection />} />
-
+            <Route path="/filtered-products" element={<FilteredProductsPage />} />
             <Route path="/*" element={<Navigate to="/"/>} />
         </Routes>
     );
