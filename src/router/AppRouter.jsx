@@ -1,12 +1,12 @@
 import React from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
 
-import Main from '../components/Main'
-import ShoppingMain from '../components/ShoppingMain'
-import ProductSection from '../components/ProductSection';
-import LoginSection from '../components/LoginSection';
-import SignUpSection from '../components/SignUpSection';
-import EditProfileSection from '../components/EditProfileSection';
+import Main from '../components/pages/Main';
+import ShoppingMain from '../components/pages/ShoppingMain';
+import ProductSection from '../components/pages/ProductSection';
+import LoginSection from '../components/auth/LoginSection';
+import SignUpSection from '../components/auth/SignUpSection';
+import EditProfileSection from '../components/auth/EditProfileSection';
 
 
 const AppRouter = () => {

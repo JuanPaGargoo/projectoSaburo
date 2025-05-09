@@ -1,8 +1,8 @@
 import { useLocation } from "react-router-dom";
-import NavbarSaburo from "./components/NavbarSaburo";
-import Footer from "./components/footer";
+import NavbarSaburo from "./components/layout/NavbarSaburo";
+import Footer from "./components/layout/Footer";
 import AppRouter from "./router/AppRouter";
-import { AuthProvider } from "./components/AuthContext"; // Importa el AuthProvider
+import { AuthProvider } from "./context/AuthContext";
 
 function App() {
   const location = useLocation();

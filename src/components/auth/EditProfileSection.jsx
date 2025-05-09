@@ -2,10 +2,10 @@ import { useState, useEffect } from "react";
 import { Button, Alert } from "@heroui/react";
 import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom"; // Importa useNavigate
-import noAvatarImage from "../images/noAvatar.png"; // Importa la imagen predeterminada
+import noAvatarImage from "../../images/noAvatar.png"; // Corrige la ruta de la imagen
 import { CameraIcon } from "@heroicons/react/24/solid";
 import { UserIcon } from "@heroicons/react/24/outline";
-import { useAuth } from "./AuthContext"; // Importa el contexto de autenticación
+import { useAuth } from "../../context/AuthContext"; // Corrige la ruta de AuthContext
 
 function EditProfileSection() {
   const { userId } = useParams();

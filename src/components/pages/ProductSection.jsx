@@ -1,20 +1,36 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { Button } from '@heroui/react'; 
-import productos from '../data/productos.json';
-import ImagesProductSection from './ImagesProductSection';
-import NavBarProductSection from './NavBarProductSection';
-import ProductDetails from './ProductDetails';
-import RatingAndReviews from './RatingAndReviews';
-import AlsoLikeSection from './AlsoLikeSection';
+import axios from 'axios';
+import { API_ENDPOINTS } from '../../constants/api';
+import ImagesProductSection from '../shared/ImagesProductSection';
+import NavBarProductSection from '../shared/NavBarProductSection';
+import ProductDetails from '../shared/ProductDetails';
+import RatingAndReviews from '../shared/RatingAndReviews';
+import '../../styles/productSection.css'; 
 
 function ProductSection() {
   const location = useLocation();
   const { id } = location.state || {}; 
-  const producto = productos.find((producto) => producto.id === id);
+  const [product, setProduct] = useState(null);
   const [selectedSize, setSelectedSize] = useState(null);
   const [quantity, setQuantity] = useState(1);
   const [selectedSection, setSelectedSection] = useState('details');
+
+  useEffect(() => {
+    const fetchProduct = async () => {
+      try {
+        const response = await axios.get(API_ENDPOINTS.PRODUCT_BY_ID(id));
+        setProduct(response.data);
+      } catch (error) {
+        console.error('Error fetching product:', error);
+      }
+    };
+
+    if (id) {
+      fetchProduct();
+    }
+  }, [id]);
 
   const handleSizeClick = (size) => {
     setSelectedSize(size);
@@ -41,15 +57,25 @@ function ProductSection() {
     }
   };
 
+  if (!product) {
+    return <p>Loading...</p>;
+  }
+
   return (
     <div className='flex flex-col items-center w-[100%] m-auto mt-10'>
       <div className='flex flex-row w-[90%] justify-center gap-10'>
-        <ImagesProductSection producto={producto} />
+        <ImagesProductSection product={product} />
         <div className='w-[50%]'>
           <div className='pb-4 border-b-2 border-grey-200'>
-            <h2 className='text-cafeCacao text-3xl font-bold mt-3'>{producto.name}</h2>
-            <p className='text-cafeAvellana text-2xl font-bold mt-3'>${producto.price}</p>
-            <p className='w-[90%] text-lg mt-3 text-gray-600'>{producto.description}</p>
+            <h2 className='text-cafeCacao text-3xl font-bold mt-3'>{product.name}</h2>
+            <p className='text-cafeAvellana text-2xl font-bold mt-3'>
+              ${parseFloat(product.price).toFixed(2)}
+            </p>
+            <p
+              className='w-[90%] h-[80px] text-md mt-3 pr-12 text-gray-600 overflow-y-auto'
+            >
+              {product.description}
+            </p>
           </div>
           <p className='w-[90%] text-medium mt-3 text-gray-500'>Choose Size</p>
           <div className='flex flex-row gap-5 mt-5 border-b-2 pb-7 border-grey-200'>
@@ -68,17 +94,17 @@ function ProductSection() {
             ))}
           </div>
           <div className='flex flex-row items-center mt-5 gap-7'>
-            <div className='flex flex-row items-center'>
+            <div className="flex items-center bg-gray-100 rounded-full px-3 py-1">
               <button
-                className='w-[40px] h-[40px] bg-gray-200 text-gray-500 rounded-full hover:bg-cafeCacao hover:text-white transition-colors duration-300'
                 onClick={handleDecrease}
+                className="w-8 h-8 flex items-center justify-center text-lg text-gray-600 rounded-full hover:bg-cafeCacao hover:text-white transition-colors duration-300"
               >
-                -
+                −
               </button>
-              <p className='mx-4 text-lg'>{quantity}</p>
+              <p className="px-3 text-lg">{quantity}</p>
               <button
-                className='w-[40px] h-[40px] bg-gray-200 text-gray-500 rounded-full hover:bg-cafeCacao hover:text-white transition-colors duration-300'
                 onClick={handleIncrease}
+                className="w-8 h-8 flex items-center justify-center text-lg text-gray-600 rounded-full hover:bg-cafeCacao hover:text-white transition-colors duration-300"
               >
                 +
               </button>
@@ -91,7 +117,6 @@ function ProductSection() {
         <NavBarProductSection onSelectSection={setSelectedSection} />
         {renderSection()}
       </div>
-      <AlsoLikeSection />
     </div>
   );
 }

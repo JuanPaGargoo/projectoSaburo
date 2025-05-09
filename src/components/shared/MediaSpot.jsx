@@ -1,9 +1,9 @@
 import React from 'react';
-import mediaSpotImage from '../images/media_spotNoBG.png';
-import '../styles/MediaSpot.css';
+import mediaSpotImage from '../../images/media_spotNoBG.png';
+import '../../styles/MediaSpot.css';
 import { Button } from "@heroui/react";
-import doodleArt from '../images/doodleArt.png';
-import isotipo from '../icons/isotipo.png';
+import doodleArt from '../../images/doodleArt.png';
+import isotipo from '../../icons/isotipo.png';
 
 function MediaSpot() {
   return (

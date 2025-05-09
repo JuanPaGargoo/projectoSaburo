@@ -1,10 +1,10 @@
 import React from "react";
-import "../styles/GridRopa.css";
+import "../../styles/GridRopa.css";
 
-import casualImage from '../images/Grid/sabiCasual.png';
-import formalImage from '../images/Grid/sabiTraje.png';
-import partyImage from '../images/Grid/sabiFiesta.png';
-import gymImage from '../images/Grid/sabiFuerte.png';
+import casualImage from '../../images/Grid/sabiCasual.png'; // Corrige la ruta de sabiCasual.png
+import formalImage from '../../images/Grid/sabiTraje.png'; // Corrige la ruta de sabiTraje.png
+import partyImage from '../../images/Grid/sabiFiesta.png'; // Corrige la ruta de sabiFiesta.png
+import gymImage from '../../images/Grid/sabiFuerte.png'; // Corrige la ruta de sabiFuerte.png
 
 function GridRopa() {
     return (

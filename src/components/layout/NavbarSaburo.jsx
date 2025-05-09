@@ -13,12 +13,12 @@ import {
 } from "@heroui/react";
 import { Link, useNavigate } from "react-router-dom";
 
-import logoSecundario from "../icons/logoSecundario.png";
-import ShopMenu from "../components/ShopMenu";
-import noAvatarImage from "../images/noAvatar.png";
-import { useAuth } from "./AuthContext"; // Importa el contexto
+import logoSecundario from "../../icons/logoSecundario.png";
+import ShopMenu from "../shared/ShopMenu"; // Corrige la ruta de ShopMenu
+import noAvatarImage from "../../images/noAvatar.png";
+import { useAuth } from "../../context/AuthContext"; // Corrige la ruta de AuthContext
 import axios from "axios"; // Importa axios para las solicitudes
-import "../styles/NavbarSaburo.css";
+import "../../styles/NavbarSaburo.css";
 import { ShoppingCartIcon as ShoppingCardIconOutline } from "@heroicons/react/24/outline";
 import { ShoppingCartIcon as ShoppingCardIconSolid } from "@heroicons/react/24/solid";
 
@@ -88,8 +88,8 @@ export default function NavbarSaburo() {
         </NavbarBrand>
         <NavbarContent className="hidden sm:flex gap-6">
           <NavbarItem>
-            <ShopMenu className="link-underline" buttonText={"Men"} menuItems={itemsMenuMan} />
-            <ShopMenu className="link-underline" buttonText={"Women"} menuItems={itemsMenuWomen} />
+            <ShopMenu className="link-underline" buttonText={"Man"} menuItems={itemsMenuMan} />
+            <ShopMenu className="link-underline" buttonText={"Woman"} menuItems={itemsMenuWomen} />
           </NavbarItem>
           <NavbarItem>
             <Link className="link-underline text-cafeCacao" to="#">

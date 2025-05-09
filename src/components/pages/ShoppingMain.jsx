@@ -1,8 +1,8 @@
 import { useState } from "react";
-import OrderSummary from "./OrderSummary";
-import BuySection from "./BuySection";
-import {Breadcrumbs, BreadcrumbItem} from "@heroui/react";
-import { Link, Router } from 'react-router-dom';
+import OrderSummary from "../shared/OrderSummary";
+import BuySection from "../shared/BuySection";
+import { Breadcrumbs, BreadcrumbItem } from "@heroui/react";
+import { Link } from 'react-router-dom';
 
 function ShoppingMain() {
   const [subtotal, setSubtotal] = useState(0);

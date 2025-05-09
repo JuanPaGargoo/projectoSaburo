@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import productos from '../data/productos.json';
-import BuyCard from './BuyCard';
+import productos from '../../data/productos.json';
+import BuyCard from './BuyCard'; // Corrige la ruta de BuyCard
 
 const BuySection = ({ onTotalChange }) => {
     const [selectedProducts, setSelectedProducts] = useState([

@@ -1,40 +1,39 @@
 import { useState, useEffect } from "react";
 import { Button, Alert } from "@heroui/react"; // Importamos Alert
+import { Link, useNavigate } from "react-router-dom";
+import { useAuth } from "../../context/AuthContext";
 import axios from "axios";
 
-function SignUpSection() {
-  const [name, setName] = useState(""); 
+function LoginSection() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
+  const [rememberMe, setRememberMe] = useState(false);
   const [alert, setAlert] = useState({ visible: false, message: "", type: "", variant: "faded" }); // Estado para la alerta
+  const { setUser } = useAuth();
+  const navigate = useNavigate();
 
-  const handleSubmit = async (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
 
-    if (password !== confirmPassword) {
-      setAlert({ visible: true, message: "Las contraseñas no coinciden.", type: "error", variant: "faded" });
-      return;
-    }
-
     try {
-      const response = await axios.post("http://localhost:3000/users/register", {
-        name,
+      const response = await axios.post("http://localhost:3000/users/login", {
         email,
         password,
       });
 
-      setAlert({ visible: true, message: "Usuario registrado correctamente 🎉", type: "success", variant: "faded" });
+      const user = response.data.user;
 
-      // Limpiar formulario
-      setName("");
-      setEmail("");
-      setPassword("");
-      setConfirmPassword("");
-    } catch (error) {
-      const errorMessage = error.response?.data?.message || "Error al conectar con el servidor";
+      setUser(user); // Guardamos el usuario en el contexto
+      setAlert({ visible: true, message: "Inicio de sesión exitoso 🎉", type: "success", variant: "faded" });
+
+      // Redirigimos a la home después de un breve retraso
+      setTimeout(() => navigate("/"), 2000);
+    } catch (err) {
+      const errorMessage = err.response?.status === 401
+        ? "Correo o contraseña incorrectos"
+        : "Error al conectar con el servidor";
       setAlert({ visible: true, message: errorMessage, type: "error", variant: "faded" });
-      console.error(error);
+      console.error(err);
     }
   };
 
@@ -60,7 +59,6 @@ function SignUpSection() {
             isVisible={alert.visible}
             title={alert.type === "success" ? "¡Éxito!" : "Error"}
             variant={alert.variant}
-           
           />
         </div>
       )}
@@ -69,28 +67,19 @@ function SignUpSection() {
         {/* Left Side */}
         <div className="w-2/4 flex flex-col items-center justify-center bg-gradient-to-br from-cafeAvellana to-cafeCacao">
           <h1 className="text-white text-5xl font-bold max-w-56 text-center">
-            Create Your Account!
-          </h1> 
+            Welcome Back!
+          </h1>
         </div>
 
         {/* Right Side */}
         <div className="w-3/5 flex items-center justify-center bg-transparent">
-          <div className="w-96 p-4">
-            <h2 className="text-2xl font-semibold mb-2">Sign Up</h2>
-            <p className="text-gray-500 mb-6">Create your account to get started.</p>
+          <div className="w-96 p-8">
+            <h2 className="text-2xl font-semibold mb-4">Login</h2>
+            <p className="text-gray-500 mb-6">
+              Welcome back! Please login to your account.
+            </p>
 
-            <form onSubmit={handleSubmit}>
-              <div className="mb-1">
-                <label className="block text-gray-600 text-sm mb-1">Name</label>
-                <input
-                  type="text"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                  className="w-full border border-gray-300 p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-cafeCacao"
-                  placeholder="Enter your name"
-                />
-              </div>
-
+            <form onSubmit={handleLogin}>
               <div className="mb-4">
                 <label className="block text-gray-600 text-sm mb-1">Email</label>
                 <input
@@ -113,23 +102,33 @@ function SignUpSection() {
                 />
               </div>
 
-              <div className="mb-4">
-                <label className="block text-gray-600 text-sm mb-1">Confirm Password</label>
-                <input
-                  type="password"
-                  value={confirmPassword}
-                  onChange={(e) => setConfirmPassword(e.target.value)}
-                  className="w-full border border-gray-300 p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-cafeCacao"
-                  placeholder="Confirm your password"
-                />
+              <div className="flex items-center justify-between mb-10 mt-10">
+                <label className="flex items-center text-sm text-gray-600">
+                  <input
+                    type="checkbox"
+                    checked={rememberMe}
+                    onChange={() => setRememberMe(!rememberMe)}
+                    className="mr-2"
+                  />
+                  Remember Me
+                </label>
+                <a href="#" className="text-sm text-cafeCacao hover:underline">
+                  Forgot Password?
+                </a>
               </div>
 
-              <Button type="submit" className="bg-cafeCacao text-white px-36 py-2 rounded-full">
-                Sign Up
+              <Button
+                type="submit"
+                className="bg-cafeCacao text-white px-36 py-2 rounded-full"
+              >
+                Login
               </Button>
 
               <p className="text-center text-gray-600 text-sm mt-4">
-                Already have an account? <a href="/login" className="text-cafeCacao hover:underline">Login</a>
+                New User?{" "}
+                <Link to="/signup" className="text-cafeCacao hover:underline">
+                  Sign Up
+                </Link>
               </p>
             </form>
           </div>
@@ -139,4 +138,4 @@ function SignUpSection() {
   );
 }
 
-export default SignUpSection;
+export default LoginSection;

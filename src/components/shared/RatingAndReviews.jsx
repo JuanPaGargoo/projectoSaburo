@@ -1,7 +1,7 @@
-import React from 'react'
-import CommentCard from './CommentCard'
-import { Button } from '@heroui/react'
-import '../styles/ratingAndReviews.css'
+import React from 'react';
+import CommentCard from './CommentCard';
+import { Button } from '@heroui/react';
+import '../../styles/RatingAndReviews.css';
 
 function RatingAndReviews() {
   return (
@@ -21,7 +21,7 @@ function RatingAndReviews() {
         <Button radius='full' className='mt-2 px-20 bg-white50 border-2 border-cafeAvellana text-cafeAvellana'>Load more Reviews</Button>
       </div>
     </div>
-  )
+  );
 }
 
-export default RatingAndReviews
+export default RatingAndReviews;

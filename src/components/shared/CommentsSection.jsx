@@ -1,5 +1,5 @@
 import { div } from "framer-motion/client"
-import CommentCard from "./CommentCard"
+import CommentCard from './CommentCard';
 
 function CommentsSection() {
   return (

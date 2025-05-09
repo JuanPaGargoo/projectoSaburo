@@ -1,12 +1,12 @@
 import React from "react";
-import "../styles/Footer.css";
-import logoSecundario from '../icons/logoSecundario.png';
-import GPay from '../images/Footer/GPay.jpg';
-import APay from '../images/Footer/APay.jpg';
-import PayPal from '../images/Footer/Paypal.jpg';
-import MasterCard from '../images/Footer/MasterCard.jpg';
-import Visa from '../images/Footer/Visa.jpg';
-import NewsLetterSection from "./NewsLetterSection";
+import "../../styles/Footer.css"; // Corrige la ruta de Footer.css
+import logoSecundario from '../../icons/logoSecundario.png';
+import GPay from '../../images/Footer/GPay.jpg';
+import APay from '../../images/Footer/APay.jpg';
+import PayPal from '../../images/Footer/Paypal.jpg';
+import MasterCard from '../../images/Footer/MasterCard.jpg';
+import Visa from '../../images/Footer/Visa.jpg';
+import NewsLetterSection from "../shared/NewsLetterSection"; // Corrige la ruta de NewsLetterSection
 
 function Footer() {
   return (

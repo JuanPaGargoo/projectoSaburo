@@ -1,0 +1,24 @@
+/* Personaliza la barra de desplazamiento */
+p {
+
+ /* Agrega espacio entre el contenido y la barra de desplazamiento */
+  box-sizing: content-box; /* Asegura que el padding no afecte el ancho total */
+}
+
+p::-webkit-scrollbar {
+  width: 4px; /* Ancho de la barra de desplazamiento */
+}
+
+p::-webkit-scrollbar-track {
+  background: #f1f1f1; /* Color del fondo de la barra */
+  border-radius: 10px; /* Bordes redondeados */
+}
+
+p::-webkit-scrollbar-thumb {
+  background: #c4c4c4; /* Color de la barra */
+  border-radius: 10px; /* Bordes redondeados */
+}
+
+p::-webkit-scrollbar-thumb:hover {
+  background: #a0a0a0; /* Color de la barra al pasar el cursor */
+}
