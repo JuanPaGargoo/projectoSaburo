@@ -10,6 +10,7 @@ import RatingAndReviews from '../shared/RatingAndReviews';
 import '../../styles/productSection.css';
 import useRandomProducts from '../../hooks/useRandomProducts';
 import ProductDisplaySection from '../shared/ProductDisplaySection'; 
+import { useCart } from '../../context/CartContext'; 
 
 function ProductSection() {
   const location = useLocation();
@@ -18,7 +19,8 @@ function ProductSection() {
   const [selectedSize, setSelectedSize] = useState(null);
   const [quantity, setQuantity] = useState(1);
   const [selectedSection, setSelectedSection] = useState('details');
-  const randomProducts = useRandomProducts(); // Move hook call here
+  const randomProducts = useRandomProducts();
+  const { addToCart } = useCart(); 
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -47,6 +49,16 @@ function ProductSection() {
     if (quantity > 1) {
       setQuantity(quantity - 1);
     }
+  };
+
+  const handleAddToCart = () => {
+    if (!selectedSize) {
+      alert('Please select a size.');
+      return;
+    }
+
+    // Agregar el producto al carrito
+    addToCart(product, selectedSize, quantity);
   };
 
   const renderSection = () => {
@@ -112,7 +124,12 @@ function ProductSection() {
                 +
               </button>
             </div>
-            <Button className='w-[60%] h-[50px] bg-cafeCacao text-white rounded-3xl'>Add to Cart</Button>
+            <Button
+              className='w-[60%] h-[50px] bg-cafeCacao text-white rounded-3xl'
+              onClick={handleAddToCart} 
+            >
+              Add to Cart
+            </Button>
           </div>
         </div>
       </div>

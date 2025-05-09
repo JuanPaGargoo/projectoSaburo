@@ -5,12 +5,14 @@ import { HeartIcon as OutlineHeartIcon } from "@heroicons/react/24/outline";
 import { HeartIcon as SolidHeartIcon } from "@heroicons/react/24/solid";
 import axios from 'axios';
 import { API_ENDPOINTS } from '../../constants/api';
+import SizeSelectorModal from './SizeSelectorModal';
 
 export default function ClothingCard({ id }) {
   const [product, setProduct] = useState(null);
   const [isFavorite, setIsFavorite] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
   const [isClicked, setIsClicked] = useState(false);
+  const [showModal, setShowModal] = useState(false); // Estado para mostrar el modal
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -30,11 +32,19 @@ export default function ClothingCard({ id }) {
     setIsFavorite(!isFavorite);
     setIsClicked(true);
     setTimeout(() => setIsClicked(false), 200); 
-  }; 
+  };
 
   const handleImageClick = () => {
     navigate('/product', { state: { id } }); 
     window.scrollTo({ top: 0 });
+  };
+
+  const handleAddToCartClick = () => {
+    setShowModal(true); // Mostrar el modal
+  };
+
+  const handleAddToCart = (size, quantity) => {
+    console.log(`Added to cart: ${product.name}, Size: ${size}, Quantity: ${quantity}`);
   };
 
   if (!product) {
@@ -57,7 +67,12 @@ export default function ClothingCard({ id }) {
         <p className="text-tiny font-bold mb-2">{product.name}</p>
         <small className="text-default-500"> ${parseFloat(product.price).toFixed(2)}</small>
         <div className="flex justify-between items-center mt-3">
-          <Button className="w-[70%] text-white font-bold" color="primary" size="sm">
+          <Button
+            className="w-[70%] text-white font-bold"
+            color="primary"
+            size="sm"
+            onClick={handleAddToCartClick} 
+          >
             Add to cart
           </Button>
           <div
@@ -74,6 +89,15 @@ export default function ClothingCard({ id }) {
           </div>
         </div>
       </CardBody>
+
+      {/* Modal */}
+      {showModal && (
+        <SizeSelectorModal
+          product={product} 
+          onClose={() => setShowModal(false)} 
+          onAddToCart={handleAddToCart}
+        />
+      )}
     </Card>
   );
 }
