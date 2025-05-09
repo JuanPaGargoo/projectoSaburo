@@ -10,9 +10,8 @@ import {
   Dropdown,
   DropdownMenu,
   Avatar,
-} from "@heroui/react"; // Ensure @heroui/react is installed and correctly configured
+} from "@heroui/react";
 import { Link, useNavigate } from "react-router-dom";
-
 import logoSecundario from "../../icons/logoSecundario.png"; // Ensure the file path is correct
 import ShopMenu from "../shared/ShopMenu"; // Ensure ShopMenu is exported correctly
 import noAvatarImage from "../../images/noAvatar.png"; // Ensure the file path is correct
@@ -40,10 +39,10 @@ const itemsMenuWoman = [
   { key: "accesoriesWoman", label: "Accessories" },
 ];
 
-export default function NavbarSaburo() {
+export default function NavbarSaburo({ onSearchChange, searchQuery }) {
   const { user, setUser, refreshNavbar } = useAuth(); // Obtén el estado refreshNavbar
   const navigate = useNavigate();
-  const [searchQuery, setSearchQuery] = useState("");
+  const [isModalOpen, setIsModalOpen] = useState(false); // State to control modal visibility
 
   // Recuperar datos del usuario al cargar el componente
   useEffect(() => {
@@ -79,11 +78,12 @@ export default function NavbarSaburo() {
   };
 
   const handleSearchChange = (e) => {
-    setSearchQuery(e.target.value);
+    const query = e.target.value;
+    onSearchChange(query); // Pass the query to the parent handler
   };
 
   return (
-    <Navbar isBordered>
+    <Navbar isBordered className="relative z-50">
       <NavbarContent justify="start">
         <NavbarBrand>
           <Link to="/" onClick={() => window.scrollTo({ top: 0 })}>
@@ -111,7 +111,7 @@ export default function NavbarSaburo() {
       <NavbarContent as="div" className="items-center" justify="end">
         <Input
           isClearable
-          value={searchQuery}
+          value={searchQuery} // Controlled input
           onChange={handleSearchChange}
           classNames={{
             base: "max-w-full sm:max-w-[25rem] h-10",

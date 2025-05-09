@@ -24,8 +24,6 @@ export default function ShopMenu({ buttonText, menuItems = [], gender }) {
             ? "hat,cap"
             : item.label.toLowerCase();
 
-          console.log(`Generated URL: /filtered-products?title=${buttonText}&gender=${genderParam}&categories=${categoriesParam}`);
-
           return (
             <DropdownItem key={item.key} color="secondary" className="text-cafeCacao">
               <Link

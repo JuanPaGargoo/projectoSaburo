@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Card, Button, CardBody, Image } from "@heroui/react";
+import { Card, Button, CardBody, Image, Skeleton } from "@heroui/react";
 import { HeartIcon as OutlineHeartIcon } from "@heroicons/react/24/outline";
 import { HeartIcon as SolidHeartIcon } from "@heroicons/react/24/solid";
 import axios from 'axios';
@@ -38,12 +38,31 @@ export default function ClothingCard({ id }) {
   };
 
   if (!product) {
-    return <p>Loading...</p>;
+    return (
+      <Card className="py-1 w-[220px] h-[375px] select-none flex flex-col">
+        <CardBody className="overflow-visible flex flex-col justify-between h-full">
+          <Skeleton className="rounded-lg h-[230px]">
+            <div className="h-full rounded-lg bg-default-300"></div>
+          </Skeleton>
+          <div className="space-y-3 mt-3">
+            <Skeleton className="w-3/5 rounded-lg">
+              <div className="h-3 w-3/5 rounded-lg bg-default-200"></div>
+            </Skeleton>
+            <Skeleton className="w-4/5 rounded-lg">
+              <div className="h-3 w-4/5 rounded-lg bg-default-200"></div>
+            </Skeleton>
+            <Skeleton className="w-2/5 rounded-lg">
+              <div className="h-3 w-2/5 rounded-lg bg-default-300"></div>
+            </Skeleton>
+          </div>
+        </CardBody>
+      </Card>
+    );
   }
 
   return (
-    <Card className="py-1 w-[220px] h-[375px] select-none">
-      <CardBody className="overflow-visible">
+    <Card className="py-1 w-[220px] h-[375px] select-none flex flex-col">
+      <CardBody className="overflow-visible flex flex-col justify-between">
         <div className="relative overflow-hidden rounded-xl mb-3">
           <Image
             alt={product.name}
