@@ -64,11 +64,11 @@ function ProductSection() {
   const renderSection = () => {
     switch (selectedSection) {
       case 'details':
-        return <ProductDetails />;
+        return <ProductDetails name={product.name} description={product.description} />;
       case 'reviews':
-        return <RatingAndReviews />;
+        return <RatingAndReviews productId={id} />;
       default:
-        return <ProductDetails />;
+        return <ProductDetails name={product.name} description={product.description} />;
     }
   };
 

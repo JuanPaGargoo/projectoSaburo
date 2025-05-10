@@ -1,7 +1,7 @@
 import { StarIcon } from "@heroicons/react/24/solid"
 import { CheckBadgeIcon } from "@heroicons/react/16/solid"
 
-function CommentCard({ stars, name, message, width = '260px', height = 'auto' }) {
+function CommentCard({ stars, name, text, width = '260px', height = 'auto' }) {
   return (
     <div className="flex flex-col gap-2 border-1 border-cafeCacao p-4 rounded-lg" style={{ width, height }}>
         <div className="flex items-center gap-2">
@@ -14,7 +14,7 @@ function CommentCard({ stars, name, message, width = '260px', height = 'auto' })
             <CheckBadgeIcon className="h-3 w-3 text-cafeCacao" />
         </div>
         <div className="text-cafeCacao text-tiny">
-            <p>{message}</p>
+            <p>{text}</p>
         </div>
     </div>
   )

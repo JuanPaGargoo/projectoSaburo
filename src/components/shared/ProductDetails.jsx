@@ -20,7 +20,6 @@ function ProductDetails() {
       <p className="text-cafeAvellana mb-4 text-center">{product.description}</p>
       <h2 className="text-xl font-semibold mb-4 text-center text-cafeCacao">Detalles de Producción</h2>
       <div className="space-y-2">
-        <p className="text-cafeAvellana"><strong>Materiales:</strong> {product.productionDetails.materials}</p>
         <p className="text-cafeAvellana"><strong>Instrucciones de Cuidado:</strong> {product.productionDetails.careInstructions}</p>
         <p className="text-cafeAvellana"><strong>Fecha de Producción:</strong> {product.productionDetails.productionDate}</p>
         <p className="text-cafeAvellana"><strong>Información Adicional:</strong> {product.productionDetails.additionalInfo}</p>
