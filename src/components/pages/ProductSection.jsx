@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-import { Button } from '@heroui/react'; 
+import { Button, Alert } from '@heroui/react'; 
 import axios from 'axios';
 import { API_ENDPOINTS } from '../../constants/api';
 import ImagesProductSection from '../shared/ImagesProductSection';
@@ -22,10 +22,13 @@ function ProductSection() {
   const randomProducts = useRandomProducts();
   const { addToCart } = useCart(); 
 
+  const [alertVisible, setAlertVisible] = useState(false);
+  const [alertMessage, setAlertMessage] = useState("");
+  const [alertType, setAlertType] = useState("info");
+
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        // Reiniciar el estado antes de cargar el nuevo producto
         setProduct(null);
         setSelectedSize(null);
         setQuantity(1);
@@ -41,6 +44,13 @@ function ProductSection() {
       fetchProduct();
     }
   }, [id]);
+
+  useEffect(() => {
+    if (alertVisible) {
+      const timer = setTimeout(() => setAlertVisible(false), 3000);
+      return () => clearTimeout(timer);
+    }
+  }, [alertVisible]);
 
   const handleSizeClick = (size) => {
     setSelectedSize(size);
@@ -58,12 +68,17 @@ function ProductSection() {
 
   const handleAddToCart = () => {
     if (!selectedSize) {
-      alert('Please select a size.');
+      setAlertMessage("Porfavor selecciona una talla");
+      setAlertType("warning");
+      setAlertVisible(true);
       return;
     }
 
-    // Agregar el producto al carrito
     addToCart(product, selectedSize, quantity);
+
+    setAlertMessage("Producto agregado al carrito");
+    setAlertType("success");
+    setAlertVisible(true);
   };
 
   const renderSection = () => {
@@ -82,7 +97,18 @@ function ProductSection() {
   }
 
   return (
-    <div className='flex flex-col items-center w-[100%] m-auto mt-10'>
+    <div className='flex flex-col items-center w-[100%] m-auto mt-10 relative'>
+      {alertVisible && (
+        <div className="absolute top-5 left-1/2 transform -translate-x-1/2 z-50 w-full max-w-md">
+          <Alert
+            color={alertType}
+            title={alertType === "success" ? "Success" : "Cuidado"}
+            description={alertMessage}
+            variant="faded"
+          />
+        </div>
+      )}
+
       <div className='flex flex-row w-[90%] justify-center gap-10'>
         <ImagesProductSection product={product} />
         <div className='w-[50%]'>

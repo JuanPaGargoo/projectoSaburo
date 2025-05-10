@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { ArrowRightIcon, TagIcon } from "@heroicons/react/24/solid";
-import { Button } from "@heroui/react";
+import { Button, Alert } from "@heroui/react";
 import axios from "axios";
 
 function OrderSummary({ subtotal, discountRate = 0.2, deliveryFee = 15 }) {
@@ -8,6 +8,7 @@ function OrderSummary({ subtotal, discountRate = 0.2, deliveryFee = 15 }) {
   const total = (subtotal - parseFloat(discount) + deliveryFee).toFixed(2);
   const [promoCode, setPromoCode] = useState("");
   const [loading, setLoading] = useState(false);
+  const [errorAlert, setErrorAlert] = useState(false);
 
   const handleCheckout = async () => {
     try {
@@ -22,14 +23,32 @@ function OrderSummary({ subtotal, discountRate = 0.2, deliveryFee = 15 }) {
       window.location.href = approvalUrl;
     } catch (error) {
       console.error("Error al crear orden de pago:", error);
-      alert("Hubo un problema al iniciar el pago.");
+      setErrorAlert(true); 
     } finally {
       setLoading(false);
     }
   };
+  useEffect(() => {
+    if (errorAlert) {
+      const timer = setTimeout(() => setErrorAlert(false), 3000);
+      return () => clearTimeout(timer);
+    }
+  }, [errorAlert]);
+
 
   return (
-    <div className="bg-white p-6 rounded-lg shadow-md border w-full max-w-lg">
+    <div className="bg-white p-6 rounded-lg shadow-md border w-full max-w-lg relative">
+      {errorAlert && (
+        <div className="absolute top-[-70px] left-1/2 transform -translate-x-1/2 z-50 w-full max-w-md">
+          <Alert
+            color="danger"
+            title="Error"
+            description="Hubo un problema al iniciar el pago."
+            variant="faded"
+          />
+        </div>
+      )}
+
       <h1 className="font-bold text-xl text-cafeCacao mb-4">Order Summary</h1>
 
       <div className="grid grid-cols-2 gap-2 text-lg">
