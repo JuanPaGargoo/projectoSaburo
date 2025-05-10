@@ -25,6 +25,11 @@ function ProductSection() {
   useEffect(() => {
     const fetchProduct = async () => {
       try {
+        // Reiniciar el estado antes de cargar el nuevo producto
+        setProduct(null);
+        setSelectedSize(null);
+        setQuantity(1);
+
         const response = await axios.get(API_ENDPOINTS.PRODUCT_BY_ID(id));
         setProduct(response.data);
       } catch (error) {
