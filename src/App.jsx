@@ -4,29 +4,36 @@ import NavbarSaburo from "./components/layout/NavbarSaburo";
 import Footer from "./components/layout/Footer";
 import AppRouter from "./router/AppRouter";
 import { AuthProvider } from "./context/AuthContext";
-import { CartProvider } from "./context/CartContext"; // Import CartProvider
+import { CartProvider } from "./context/CartContext";
+import FloatingButton from "./components/shared/FloatingButton";
+import IAChatModal from "./components/shared/IAChatModal"; // Importar el nuevo modal
 
 function App() {
   const location = useLocation();
-  const [isModalOpen, setIsModalOpen] = useState(false); // State to control modal visibility
-  const [searchQuery, setSearchQuery] = useState(""); // State for search query
+  const [isModalOpen, setIsModalOpen] = useState(false); // Estado para el modal de búsqueda
+  const [isIAChatOpen, setIsIAChatOpen] = useState(false); // Estado para el modal de IA Chat
+  const [searchQuery, setSearchQuery] = useState("");
 
   const handleSearchChange = (query) => {
     setSearchQuery(query);
-    setIsModalOpen(query.length > 0); // Open modal if there's input
+    setIsModalOpen(query.length > 0);
   };
 
   const handleModalClose = () => {
-    setIsModalOpen(false); // Close the modal
-    setSearchQuery(""); // Clear the search query
+    setIsModalOpen(false);
+    setSearchQuery("");
   };
 
-  // Handle Escape key to clear the search query
+  const handleIAChatToggle = () => {
+    setIsIAChatOpen(!isIAChatOpen); // Alternar el estado del modal de IA Chat
+  };
+
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.key === "Escape") {
-        setSearchQuery(""); // Clear the search query
-        setIsModalOpen(false); // Close the modal
+        setSearchQuery("");
+        setIsModalOpen(false);
+        setIsIAChatOpen(false); // Cerrar el modal de IA Chat con Escape
       }
     };
 
@@ -34,21 +41,24 @@ function App() {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, []);
 
-  // Prevent scrolling and compensate for scrollbar width when the modal is open
   useEffect(() => {
-    if (isModalOpen) {
+    if (isModalOpen || isIAChatOpen) {
       const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
       document.body.classList.add("overflow-hidden");
-      document.body.style.paddingRight = `${scrollbarWidth}px`; // Add padding to compensate for scrollbar
+      document.body.style.paddingRight = `${scrollbarWidth}px`;
     } else {
       document.body.classList.remove("overflow-hidden");
-      document.body.style.paddingRight = ""; // Reset padding
+      document.body.style.paddingRight = "";
     }
     return () => {
       document.body.classList.remove("overflow-hidden");
-      document.body.style.paddingRight = ""; // Reset padding
+      document.body.style.paddingRight = "";
     };
-  }, [isModalOpen]);
+  }, [isModalOpen, isIAChatOpen]);
+
+  const handleButtonClick = () => {
+    alert("¡Botón IA presionado!");
+  };
 
   return (
     <AuthProvider>
@@ -58,6 +68,8 @@ function App() {
         {location.pathname !== "/login" &&
           location.pathname !== "/signup" &&
           !location.pathname.startsWith("/edit-profile") && <Footer />}
+        <FloatingButton onClick={handleIAChatToggle} />
+        <IAChatModal isOpen={isIAChatOpen} onClose={handleIAChatToggle} />
       </CartProvider>
     </AuthProvider>
   );
