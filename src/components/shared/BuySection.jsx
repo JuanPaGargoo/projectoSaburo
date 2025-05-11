@@ -12,7 +12,6 @@ const BuySection = ({ onTotalChange }) => {
 
   if (cart.length === 0) return (
     <div className='px-[5%] flex items-center justify-center gap-5 mb-8'>
-      <p>Your cart is empty.</p>
     </div>
   );
 
