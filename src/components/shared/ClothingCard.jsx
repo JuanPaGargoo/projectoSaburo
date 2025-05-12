@@ -74,34 +74,61 @@ export default function ClothingCard({ id }) {
     <Card className="py-1 w-[220px] h-[375px] select-none flex flex-col">
       <CardBody className="overflow-visible flex flex-col justify-between">
         <div className="relative overflow-hidden rounded-xl mb-3">
+          {/* Imagen del producto */}
           <Image
             alt={product.name}
             className="object-cover transition-transform duration-300 hover:scale-110 cursor-pointer"
             src={`${API_ENDPOINTS.IMAGES}/${product.frontImage}`}
             height={230}
             width={200}
-            onClick={handleImageClick}
+            onClick={handleImageClick} // Permite clic incluso si está agotado
           />
         </div>
         <p className="text-tiny font-bold mb-2">{product.name}</p>
-        <small className="text-default-500"> ${parseFloat(product.price).toFixed(2)}</small>
+        {/* Precio o mensaje de "Sold Out" */}
+        <small className="text-default-500">
+          {product.soldOut ? (
+            <span className="text-red-600 font-bold">Sold Out</span>
+          ) : product.discount > 0 ? (
+            <div className="flex items-center gap-2">
+              {/* Precio original subrayado */}
+              <span className="line-through text-gray-500">
+                ${parseFloat(product.price).toFixed(2)}
+              </span>
+              {/* Precio con descuento */}
+              <span className="text-red-600 font-bold">
+                ${parseFloat(product.price - (product.price * product.discount) / 100).toFixed(2)}
+              </span>
+            </div>
+          ) : (
+            // Precio normal si no hay descuento
+            `$${parseFloat(product.price).toFixed(2)}`
+          )}
+        </small>
         <div className="flex justify-between items-center mt-3">
           <Button
             className="w-[70%] text-white font-bold"
             color="primary"
             size="sm"
-            onClick={handleAddToCartClick} 
+            onClick={handleAddToCartClick}
+            disabled={product.soldOut} // Deshabilita el botón si está agotado
           >
             Add to cart
           </Button>
           <div
-            onClick={toggleFavorite}
+            onClick={!product.soldOut ? toggleFavorite : undefined} // Deshabilita clic si está agotado
             onMouseEnter={() => setIsHovered(true)}
             onMouseOut={() => setIsHovered(false)}
-            className={`cursor-pointer transition-transform ${isClicked ? 'transform scale-110' : ''}`}
+            className={`cursor-pointer transition-transform ${
+              isClicked ? "transform scale-110" : ""
+            }`}
           >
             {isFavorite || isHovered ? (
-              <SolidHeartIcon className={`h-7 w-7 ${isHovered ? 'text-cafeAvellana' : 'text-cafeCacao'}`} />
+              <SolidHeartIcon
+                className={`h-7 w-7 ${
+                  isHovered ? "text-cafeAvellana" : "text-cafeCacao"
+                }`}
+              />
             ) : (
               <OutlineHeartIcon className="h-7 w-7 text-cafeCacao" />
             )}
@@ -112,8 +139,8 @@ export default function ClothingCard({ id }) {
       {/* Modal */}
       {showModal && (
         <SizeSelectorModal
-          product={product} 
-          onClose={() => setShowModal(false)} 
+          product={product}
+          onClose={() => setShowModal(false)}
           onAddToCart={handleAddToCart}
         />
       )}

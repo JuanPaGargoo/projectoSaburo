@@ -28,7 +28,7 @@ export default function ShopMenu({ buttonText, menuItems = [], gender }) {
             <DropdownItem key={item.key} color="secondary" className="text-cafeCacao">
               <Link
                 to={`/filtered-products?title=${buttonText}&gender=${genderParam}&categories=${categoriesParam}`}
-                className="block px-4 py-2 text-cafeCacao hover:bg-gray-100"
+                className="block px-4 py-2 text-cafeCacao "
                 onClick={() => window.scrollTo({ top: 0 })} // Scroll to top on click
               >
                 {item.label}
