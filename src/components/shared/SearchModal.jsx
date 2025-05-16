@@ -14,11 +14,11 @@ function SearchModal({ isOpen, onClose, searchQuery }) {
             params: { name_like: searchQuery }, // Use partial matching
           });
 
-          // Filter results to include partial matches
           const filteredResults = response.data.filter((product) =>
             product.name.toLowerCase().includes(searchQuery.toLowerCase())
           );
 
+          console.log("Search results:", filteredResults); // Depuración
           setSearchResults(filteredResults);
         } catch (error) {
           console.error("Error fetching search results:", error);
@@ -62,7 +62,6 @@ function SearchModal({ isOpen, onClose, searchQuery }) {
           </button>
         </div>
         <div className="mt-4 flex flex-wrap gap-4 pl-7">
-
           {searchResults.length > 0 ? (
             searchResults.map((product) => (
               <ClothingCard

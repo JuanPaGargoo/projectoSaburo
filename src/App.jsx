@@ -7,6 +7,7 @@ import { AuthProvider } from "./context/AuthContext";
 import { CartProvider } from "./context/CartContext";
 import FloatingButton from "./components/shared/FloatingButton";
 import IAChatModal from "./components/shared/IAChatModal"; // Importar el nuevo modal
+import SearchModal from "./components/shared/SearchModal"; // Importar el modal de búsqueda
 
 function App() {
   const location = useLocation();
@@ -16,12 +17,12 @@ function App() {
 
   const handleSearchChange = (query) => {
     setSearchQuery(query);
-    setIsModalOpen(query.length > 0);
+    setIsModalOpen(query.length > 0); // Abre el modal si hay texto en el campo de búsqueda
   };
 
   const handleModalClose = () => {
-    setIsModalOpen(false);
-    setSearchQuery("");
+    setIsModalOpen(false); // Cierra el modal
+    setSearchQuery(""); // Limpia la consulta de búsqueda
   };
 
   const handleIAChatToggle = () => {
@@ -63,13 +64,21 @@ function App() {
   return (
     <AuthProvider>
       <CartProvider>
-        <NavbarSaburo />
+        <NavbarSaburo 
+          onSearchChange={handleSearchChange} // Pasar la función como prop
+          searchQuery={searchQuery} // Pasar el estado de búsqueda como prop
+        />
         <AppRouter />
         {location.pathname !== "/login" &&
           location.pathname !== "/signup" &&
           !location.pathname.startsWith("/edit-profile") && <Footer />}
         <FloatingButton onClick={handleIAChatToggle} />
         <IAChatModal isOpen={isIAChatOpen} onClose={handleIAChatToggle} />
+        <SearchModal
+          isOpen={isModalOpen} // Controla si el modal está abierto
+          onClose={handleModalClose} // Función para cerrar el modal
+          searchQuery={searchQuery} // Pasa la consulta de búsqueda
+        />
       </CartProvider>
     </AuthProvider>
   );

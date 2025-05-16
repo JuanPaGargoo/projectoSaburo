@@ -112,7 +112,7 @@ export default function NavbarSaburo({ onSearchChange, searchQuery }) {
         <Input
           isClearable
           value={searchQuery} // Controlled input
-          onChange={handleSearchChange}
+          onChange={handleSearchChange} // Llama a la función para manejar cambios
           classNames={{
             base: "max-w-full sm:max-w-[25rem] h-10",
             mainWrapper: "h-full",
